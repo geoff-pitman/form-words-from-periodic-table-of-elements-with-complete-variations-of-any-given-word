@@ -14,8 +14,8 @@ float gettime_ms(struct timeval start, struct timeval end)
     float secs  = end.tv_sec  - start.tv_sec;
     float usecs = end.tv_usec - start.tv_usec;
     float mtime = ((secs)*1000 + usecs/1000) + .0005;
-	
-	  return mtime;
+    
+    return mtime;
 }  
 
 int main()
