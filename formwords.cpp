@@ -105,6 +105,8 @@ int main()
 /*
 !!!! special case 3-char-symbol check  !!! 
   Happens rarely, so check is used to make sure it matches.
+  (In fact, there are no words in the english language that
+  have a match...buuuuuut...)
   If a match is found for one of the 3 char symbols, the rest
   of the process is initiated.  
 Uuo: O)safe
