@@ -23,9 +23,9 @@ int main()
     float stopwatch;
     gettimeofday(&start, NULL); 
     
-    string word, temp;
-    vector<string> els1, els2;
-    ifstream dict("dict.txt");
+    string word, temp, uuxtrack;
+    vector<string> els1, els2, els3;
+    ifstream dict("ucheck.txt");
     ifstream el1("el1.txt");
     ifstream el2("el2.txt");
     
@@ -38,7 +38,7 @@ int main()
     while (dict >> word)
     {
         int truthtable = 1, tablecount = 0;
-        bool fail = false, ucheck = false;
+        bool fail = false, ucheck = false, upass = false;
         string conts, fill;
         vector<bool> captrack;
         vector<int> variations;
@@ -51,6 +51,7 @@ int main()
             fill += "?";
     
         conts = fill;
+        uuxtrack = fill;
     
  
 ////////////////////////////////////////////////////////////////////////////////
@@ -65,6 +66,7 @@ int main()
                 {
                     temp = fill;
                     temp[idx2] = els1[idx][0];
+                    uuxtrack[idx2] = els1[idx][0];
                     ++variations[idx2];   
                 }
             }        
@@ -79,7 +81,10 @@ int main()
                 {
                     temp = fill;
                     temp[idx2] = els2[idx][0];
+                    uuxtrack[idx2] = els2[idx][0];
                     temp[idx2+1] = els2[idx][1];
+                    uuxtrack[idx2+1] = els2[idx][1];
+                    
                 
                     if (variations[idx2] == 0)
                         ++variations[idx2];
@@ -96,75 +101,77 @@ int main()
         }
 
 
-//////////////////////////////////////////////////////////////////////
-/////// !!!! idea rough-sketch for 3-char-symbol check  !!!  /////////
- /*  
-specific 3 char symbol check
+
+/*
+!!!! special case 3-char-symbol check  !!! 
+  Happens rarely, so check is used to make sure it matches.
+  If a match is found for one of the 3 char symbols, the rest
+  of the process is initiated.  
 Uuo: O)safe
 Uup: P)a,d,m,r,t
 Uus: S)e,g,m,r
 Uut: *)Ta,Te,Tl,Tm
 */
-/*
         for (int idx = 0; idx < word.length()-2; ++idx)
         {
             if (word[idx] == 'u' && word[idx+1] == 'u')
             {
                 if (word[idx+2] == 'o')
-                {
                     ucheck = true;
-                    ++variations[idx+1];
-                    ++variations[idx+2];
-                }
                 else if (word[idx+2] == 'p')
-                {
                     ucheck = true;
-                    ++variations[idx+1];
-                    
-                    if (idx < word.length()-3 && variations [idx+2] < 2)
-                    {
-                        if (word[idx+3] == 'a')
-                            ++variations[idx+2];
-                        else if (word[idx+3] == 'd')
-                            ++variations[idx+2];
-                        else if (word[idx+3] == 'm')
-                            ++variations[idx+2];
-                        else if (word[idx+3] == 'r')
-                            ++variations[idx+2];
-                        else if (word[idx+3] == 't')
-                            ++variations[idx+2];    
-                    }
-                }
                 else if (word[idx+2] == 's')
-                {
                     ucheck = true;
-                    ++variations[idx+1];
-                    
-                    if (idx == word.length()-3)
-                        ++variations[idx+2];
-                    else if (idx < word.length()-3 && variations[idx+2] < 2)
-                    {
-                        if (word[idx+3] == 'e')
-                            ++variations[idx+2];
-                        else if (word[idx+3] == 'g')
-                            ++variations[idx+2];
-                        else if (word[idx+3] == 'm')
-                            ++variations[idx+2];
-                        else if (word[idx+3] == 'r')
-                            ++variations[idx+2];
-                    }
-                }
                 else if (word[idx+2] == 't')
-                {
                     ucheck = true;
-                    ++variations[idx+1];
-                   
-                    if (idx == word.length()-3 && variations[idx+2] == 0)
-                        ++variations[idx+2];
-                }
             }
         }
-*/        
+        
+        if (ucheck)
+        {
+           ifstream el3("el3.txt");
+           
+            while (el3 >> temp)
+                els3.push_back(temp);
+            
+            for (int idx = 0; idx < els3.size(); ++idx)
+            {   
+                for (int idx2 = 0; idx2 < word.length()-1; ++idx2)
+                {
+                    if ((els3[idx][0] == toupper(word[idx2])) && (els3[idx][1] == tolower(word[idx2+1])) && (els3[idx][2] == tolower(word[idx2+2])) )
+                    {
+                        uuxtrack[idx2] = els3[idx][0];
+                        uuxtrack[idx2+1] = els3[idx][1];
+                        uuxtrack[idx2+2] = els3[idx][2];
+                    }
+                }
+            } 
+            
+            for (int idx = 0; idx < word.length(); ++idx)
+            {
+                upass = true;
+                if (uuxtrack[idx] == '?')
+                    upass = false;  
+            }
+        
+            if (upass)
+            {
+                results.push_back(uuxtrack);
+                cout << word << ": " << results.size() << " variation(s) found... \n";
+         
+                for (int idx = 0; idx < results.size(); ++idx)
+                    cout << "[" << results[idx] << "]\n";
+        
+                continue;     
+            }
+            else
+            {
+                //cout << word << ": ***FAIL***" << endl << endl;
+            
+                continue;
+            }
+        }
+        
 ///////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////         
          
