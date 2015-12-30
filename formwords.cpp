@@ -37,11 +37,8 @@ int main()
     while (el2 >> temp)
         els2.push_back(temp);
         
-    //while (el3 >> temp)
-    //{
-    //    els3.push_back(temp);
-    //    //cout << els3[els3.size()-1] << endl;
-    //}
+    while (el3 >> temp)
+        els3.push_back(temp);
     
     while (dict >> word)
     {
@@ -106,24 +103,78 @@ int main()
             } 
         }
 
-/*    
-//  3 char symbols
-        for (int idx = 0; idx < els3.size(); ++idx)
+ /*  
+
+specific 3 char symbol check
+Uuo: O)safe
+Uup: P)a,d,m,r,t
+Uus: S)e,g,m,r
+Uut: *)Ta,Te,Tl,Tm
+*/
+        bool ucheck = false;
+        for (int idx = 0; idx < word.length()-2; ++idx)
         {
-            for (int idx2 = 0; idx2 < word.length()-1; ++idx2)
+            if (word[idx] == 'u' && word[idx+1] == 'u')
             {
-                if (els3[idx][0] == toupper(word[idx2]) && els3[idx][1] == tolower(word[idx2+1]) && els3[idx][2] == tolower(word[idx2+2]))
+                if (word[idx+2] == 'o')
                 {
-                    temp = fill;
-                    temp[idx2] = els3[idx][0];
-                    temp[idx2+1] = els3[idx][1];
-                    temp[idx2+2] = els3[idx][2];
-                    idx2 += 2;
+                    ucheck = true;
+                    
+                    ++variations[idx+1];
+                    ++variations[idx+2];
                 }
-            } 
+                else if (word[idx+2] == 'p')
+                {
+                    ucheck = true;
+                    ++variations[idx+1];
+                    
+                    if (idx < word.length()-3 && variations [idx+2] < 2)
+                    {
+                        if (word[idx+3] == 'a')
+                            ++variations[idx+2];
+                        else if (word[idx+3] == 'd')
+                            ++variations[idx+2];
+                        else if (word[idx+3] == 'm')
+                            ++variations[idx+2];
+                        else if (word[idx+3] == 'r')
+                            ++variations[idx+2];
+                        else if (word[idx+3] == 't')
+                            ++variations[idx+2];    
+                    }
+                }
+                else if (word[idx+2] == 's')
+                {
+                    ucheck = true;
+                    ++variations[idx+1];
+                    
+                    if (idx == word.length()-3)
+                        ++variations[idx+2];
+                    else if (idx < word.length()-3 && variations[idx+2] < 2)
+                    {
+                        if (word[idx+3] == 'e')
+                            ++variations[idx+2];
+                        else if (word[idx+3] == 'g')
+                            ++variations[idx+2];
+                        else if (word[idx+3] == 'm')
+                            ++variations[idx+2];
+                        else if (word[idx+3] == 'r')
+                            ++variations[idx+2];
+                    }
+                }
+                else if (word[idx+2] == 't')
+                {
+                    ucheck = true;
+                    ++variations[idx+1];
+                   
+                    if (idx == word.length()-3 && variations[idx+2] == 0)
+                        ++variations[idx+2];
+                }
+                    
+                
+            }
         }
-*/  
-    
+         
+         
         for(int idx = 0; idx < word.length(); ++idx)
         {
             if (variations[idx] == 0)
@@ -197,11 +248,11 @@ int main()
                 if (islower(wordtable[idx][idx2]))
                 {
                     ++lower;
-                    
-                    if (lower >= 2)
+                    if (ucheck && lower >= 2 && idx2 < word.length()-2 && wordtable[idx][idx2-2] == 'U' && wordtable[idx][idx2-1] == 'u')
+                        lower = 0;
+                    else if (lower >= 2)
                     {
                         lowercheck = false;
-                        
                         break;
                     }
                 }
@@ -218,7 +269,6 @@ int main()
                         if (els1[idx3][0] == wordtable[idx][idx2])
                         {
                             elscheck = true;
-                            
                             continue;
                         }
                     }
