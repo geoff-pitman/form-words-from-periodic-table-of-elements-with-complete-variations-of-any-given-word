@@ -7,32 +7,16 @@
 
 using namespace std;
 
+void process(string word, const vector<string> &els1, const vector<string> &els2, const vector<string> &els3);
+
 int main()
 {
+    ifstream dict("dict.txt");
     ifstream el1("el1.txt");
     ifstream el2("el2.txt");
-    ifstream el3("el3.txt");
-    string word = "businesses";
-    int trackexp = 0; 
-    vector<bool> captrack;
-    string conts = "";
-    //string word = "alfhkoklnkbhjgtftesrwrytfgyiuijpoiouyttesdhvb";
-    string fill = "";
-    string temp, list1, list2, list3;
-    vector<string> els1, els2, els3, wl, wl1, wl2, wl3;
-    vector<int> variations;
-    int truthtable = 1;
-    int tablecount = 0;
-    vector<string> wordtable;
-    vector<string> results;
- 
-    for(int idx = 0; idx < word.length(); ++idx)
-        variations.push_back(0);
-    
-    for(int idx = 0; idx < word.length(); ++idx)
-        fill += "?";
-    
-    conts = fill;
+    ifstream el3("el3.txt"); 
+    vector<string> els1, els2, els3, els4;
+    string temp = "";
     
     while (el1 >> temp)
     {
@@ -51,6 +35,40 @@ int main()
         els3.push_back(temp);
         //cout << els3[els3.size()-1] << endl;
     }
+    
+    while (dict >> temp)
+    {
+        process(temp, els1, els2, els3 );
+    }
+  
+    return 0;
+}
+
+void process(string word, const vector<string> &els1, const vector<string> &els2, const vector<string> &els3)
+{
+    //cout << "[" << word << "]\n";
+    //string word = "businesses";
+    int trackexp = 0; 
+    vector<bool> captrack;
+    string conts = "";
+    //string word = "alfhkoklnkbhjgtftesrwrytfgyiuijpoiouyttesdhvb";
+    string fill = "";
+    string temp, list1, list2, list3;
+    vector<string> wl, wl1, wl2, wl3;
+    vector<int> variations;
+    int truthtable = 1;
+    int tablecount = 0;
+    vector<string> wordtable;
+    vector<string> results;
+ 
+    for(int idx = 0; idx < word.length(); ++idx)
+        variations.push_back(0);
+    
+    for(int idx = 0; idx < word.length(); ++idx)
+        fill += "?";
+    
+    conts = fill;
+    
  
 ////////////////////////////////////////////////////////////////////////////////
 // FIND MATCHING LETTERS
@@ -66,9 +84,9 @@ int main()
                 temp = fill;
                 temp[idx2] = els1[idx][0];
                 ++variations[idx2];   
-                wl.push_back(temp);
-                wl1.push_back(temp);
-                cout << wl1[wl1.size()-1] << endl;
+                //wl.push_back(temp);
+                //wl1.push_back(temp);
+                //cout << wl1[wl1.size()-1] << endl;
             }
         }        
     }
@@ -97,9 +115,9 @@ int main()
                     conts[idx2] = '?';
                     
                 
-                wl.push_back(temp);
-                wl2.push_back(temp);
-                cout << wl2[wl2.size()-1] << endl;
+                //wl.push_back(temp);
+                //wl2.push_back(temp);
+                //cout << wl2[wl2.size()-1] << endl;
             }
         } 
     }
@@ -117,9 +135,9 @@ int main()
                 temp[idx2+1] = els3[idx][1];
                 temp[idx2+2] = els3[idx][2];
                 idx2 += 2;
-                wl.push_back(temp);
-                wl3.push_back(temp);
-                cout << wl3[wl3.size()-1] << endl;
+                //wl.push_back(temp);
+                //wl3.push_back(temp);
+                //cout << wl3[wl3.size()-1] << endl;
                 
             }
         } 
@@ -128,12 +146,12 @@ int main()
     
     for(int idx = 0; idx < word.length(); ++idx)
     {
-        cout << variations[idx] << " ";
+        //cout << variations[idx] << " ";
         
         if (variations[idx] == 0)
         {
-            cout << "FAIL: No possible word formations" << endl;
-            return 0;
+            cout << word << ": ***FAIL***" << endl << endl;
+            return;
         }
         else if (variations[idx] == 2)
         {
@@ -141,9 +159,9 @@ int main()
             ++tablecount;
         }
     }
-    cout << "\nChecking for binary information: \n"
-         << "Total binary values: " << tablecount << endl
-         << "Total possible permutations: 2^" << tablecount << " = " << truthtable << endl;
+    //cout << "\nChecking for binary information: \n"
+    //     << "Total binary values: " << tablecount << endl
+    //     << "Total possible permutations: 2^" << tablecount << " = " << truthtable << endl;
  
     for (int idx = 0; idx < tablecount; ++idx)
        captrack.push_back(false);
@@ -154,7 +172,6 @@ int main()
         wordtable.push_back(fill);
         for (int idx2 = word.length()-1; idx2 >= 0; --idx2)
         {
-            // need to grab variations.  can't throw away list.  use albino to see
             if (variations[idx2] == 1)
             {
                 if (conts[idx2] == '?')
@@ -222,23 +239,32 @@ int main()
             if (elscheck && lowercheck) 
             {
                 results.push_back(wordtable[idx]);
-                wordtable[idx] += ": SUCCESS";
+                //wordtable[idx] += ": SUCCESS";
             }
             else
             {
-                wordtable[idx] += ": FAIL";
+                //wordtable[idx] += ": FAIL";
             }
             
-           cout << wordtable[idx] << endl; 
+           //cout << wordtable[idx] << endl; 
     }
     
-    cout << "Results calculated: \n"
-         << "Possible - actual = " << truthtable - results.size() << " possibilities removed\n"
-         << "Variations found = " << results.size() << endl;
+    if (results.size() == 0)
+    {
+        cout << word << ": ***FAIL***" << endl << endl;
+        return;
+    }
+    else 
+    {
+        //cout << "Results calculated: \n"
+        //     << "Possible - actual = " << truthtable - results.size() << " possibilities removed\n"
+        cout << word << ": " << results.size() << " variation(s) found... \n";
          
-    for (int idx = 0; idx < results.size(); ++idx)
-        cout << results[idx] << endl;
+        for (int idx = 0; idx < results.size(); ++idx)
+            cout << "[" << results[idx] << "]\n";
+        
+        cout << endl;
+    }
     
-    cout << endl;
-    return 0;
+    return;
 }
