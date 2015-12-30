@@ -201,6 +201,7 @@ int main()
                     if (lower >= 2)
                     {
                         lowercheck = false;
+                        
                         break;
                     }
                 }
@@ -217,6 +218,7 @@ int main()
                         if (els1[idx3][0] == wordtable[idx][idx2])
                         {
                             elscheck = true;
+                            
                             continue;
                         }
                     }
