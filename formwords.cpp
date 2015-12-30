@@ -170,7 +170,7 @@ Uut: *)Ta,Te,Tl,Tm
         {
             if (variations[idx] == 0)
             {
-                cout << word << ": ***FAIL***" << endl << endl;
+                //cout << word << ": ***FAIL***" << endl << endl;
                 fail = true;
                 
                 break;
@@ -276,9 +276,7 @@ Uut: *)Ta,Te,Tl,Tm
                 results.push_back(wordtable[idx]);
         }
     
-        if (results.size() == 0)
-            cout << word << ": ***FAIL***" << endl << endl;
-        else 
+        if (results.size() > 0)
         {
             cout << word << ": " << results.size() << " variation(s) found... \n";
          
@@ -287,6 +285,8 @@ Uut: *)Ta,Te,Tl,Tm
         
             cout << endl;
         } 
+        //else
+            //cout << word << ": ***FAIL***" << endl << endl;
     }
   
     gettimeofday(&end, NULL);
