@@ -11,11 +11,11 @@ using namespace std;
 
 float gettime_ms(struct timeval start, struct timeval end)
 {
-	float secs  = end.tv_sec  - start.tv_sec;
-	float usecs = end.tv_usec - start.tv_usec;
-	float mtime = ((secs)*1000 + usecs/1000) + .0005;
+	  float secs  = end.tv_sec  - start.tv_sec;
+	  float usecs = end.tv_usec - start.tv_usec;
+	  float mtime = ((secs)*1000 + usecs/1000) + .0005;
 	
-	return mtime;
+	  return mtime;
 }  
 
 int main()
@@ -95,10 +95,8 @@ int main()
                 
                     if (variations[idx2] == 1)
                         conts[idx2] = els2[idx][1];
-               
                     else if (variations[idx2] > 1)
                         conts[idx2] = '?';
-                    
                 }
             } 
         }
@@ -229,7 +227,7 @@ Uut: *)Ta,Te,Tl,Tm
                         wordtable[idx][idx2] = toupper(word[idx2]);
                         
                         if ((idx % (int)(pow(2, trackexp))) == 0)
-                        captrack[trackexp] = false;  
+                            captrack[trackexp] = false;  
                     }      
                
                     ++trackexp;
@@ -254,6 +252,7 @@ Uut: *)Ta,Te,Tl,Tm
                     else if (lower >= 2)
                     {
                         lowercheck = false;
+                        
                         break;
                     }
                 }
@@ -270,6 +269,7 @@ Uut: *)Ta,Te,Tl,Tm
                         if (els1[idx3][0] == wordtable[idx][idx2])
                         {
                             elscheck = true;
+                            
                             continue;
                         }
                     }
