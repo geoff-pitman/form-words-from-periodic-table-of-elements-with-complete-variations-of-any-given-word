@@ -25,25 +25,21 @@ int main()
     gettimeofday(&start, NULL); 
     
     string word, temp;
-    vector<string> els1, els2, els3;
+    vector<string> els1, els2;
     ifstream dict("dict.txt");
     ifstream el1("el1.txt");
     ifstream el2("el2.txt");
-    ifstream el3("el3.txt"); 
     
     while (el1 >> temp)
         els1.push_back(temp);
      
     while (el2 >> temp)
         els2.push_back(temp);
-        
-    while (el3 >> temp)
-        els3.push_back(temp);
     
     while (dict >> word)
     {
         int truthtable = 1, tablecount = 0;
-        bool fail = false;
+        bool fail = false, ucheck = false;
         string conts, fill;
         vector<bool> captrack;
         vector<int> variations;
@@ -61,7 +57,6 @@ int main()
 ////////////////////////////////////////////////////////////////////////////////
 // FIND MATCHING LETTERS
 //////////////////////////////////////////////////////////////////////////////// 
-
 // 1 char symbols
         for (int idx = 0; idx < els1.size(); ++idx)
         {
@@ -111,7 +106,6 @@ Uut: *)Ta,Te,Tl,Tm
 */
 //////////////////////////////////////////////////////////
 /////////  !!!! NOT FULLY TESTED !!!  ////////////////////
-        bool ucheck = false;
         for (int idx = 0; idx < word.length()-2; ++idx)
         {
             if (word[idx] == 'u' && word[idx+1] == 'u')
@@ -119,7 +113,6 @@ Uut: *)Ta,Te,Tl,Tm
                 if (word[idx+2] == 'o')
                 {
                     ucheck = true;
-                    
                     ++variations[idx+1];
                     ++variations[idx+2];
                 }
@@ -247,6 +240,7 @@ Uut: *)Ta,Te,Tl,Tm
                 if (islower(wordtable[idx][idx2]))
                 {
                     ++lower;
+                    
                     if (ucheck && lower >= 2 && idx2 < word.length()-2 && wordtable[idx][idx2-2] == 'U' && wordtable[idx][idx2-1] == 'u')
                         lower = 0;
                     else if (lower >= 2)
