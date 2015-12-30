@@ -25,7 +25,7 @@ int main()
     
     string word, temp, uuxtrack;
     vector<string> els1, els2, els3;
-    ifstream dict("ucheck.txt");
+    ifstream dict("dict.txt");
     ifstream el1("el1.txt");
     ifstream el2("el2.txt");
     
