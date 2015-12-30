@@ -103,14 +103,16 @@ int main()
             } 
         }
 
- /*  
 
+ /*  
 specific 3 char symbol check
 Uuo: O)safe
 Uup: P)a,d,m,r,t
 Uus: S)e,g,m,r
 Uut: *)Ta,Te,Tl,Tm
 */
+//////////////////////////////////////////////////////////
+/////////  !!!! NOT FULLY TESTED !!!  ////////////////////
         bool ucheck = false;
         for (int idx = 0; idx < word.length()-2; ++idx)
         {
@@ -169,11 +171,10 @@ Uut: *)Ta,Te,Tl,Tm
                     if (idx == word.length()-3 && variations[idx+2] == 0)
                         ++variations[idx+2];
                 }
-                    
-                
             }
         }
-         
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////         
          
         for(int idx = 0; idx < word.length(); ++idx)
         {
