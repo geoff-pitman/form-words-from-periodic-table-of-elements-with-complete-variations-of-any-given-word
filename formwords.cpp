@@ -5,7 +5,6 @@
 #include <cmath>
 #include <cctype>
 #include <sys/time.h>
-#include <cstdio>
 
 using namespace std;
 
