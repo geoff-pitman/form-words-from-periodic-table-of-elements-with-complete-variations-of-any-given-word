@@ -97,7 +97,7 @@ int main()
 
 
 //////////////////////////////////////////////////////////////////////
-/////// !!!! 3-char-check code segment not fully tested !!!  /////////
+/////// !!!! idea rough-sketch for 3-char-symbol check  !!!  /////////
  /*  
 specific 3 char symbol check
 Uuo: O)safe
@@ -105,6 +105,7 @@ Uup: P)a,d,m,r,t
 Uus: S)e,g,m,r
 Uut: *)Ta,Te,Tl,Tm
 */
+/*
         for (int idx = 0; idx < word.length()-2; ++idx)
         {
             if (word[idx] == 'u' && word[idx+1] == 'u')
@@ -163,7 +164,8 @@ Uut: *)Ta,Te,Tl,Tm
                 }
             }
         }
-///////////!!! Above code segment NOT FULLY TESTED!!!//////////////////
+*/        
+///////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////         
          
         for(int idx = 0; idx < word.length(); ++idx)
