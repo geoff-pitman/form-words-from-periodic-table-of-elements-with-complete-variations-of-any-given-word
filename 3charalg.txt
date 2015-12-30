@@ -1,0 +1,22 @@
+*need a more specific algorithm for bucket lists
+*need to identify patterns for adjacent letters
+
+find out if:
+a. word can be formed only with the 3 char
+b. word can be formed anyway
+
+if a:
+examine adjacet letters that could possibly be affected
+search through element lists again
+add to results 
+skip main processing alg
+
+if b:
+flag UuX check
+go to main processing alg
+after results are processed
+examine adjacet letters that could possibly be affected
+search through element lists again
+add to results
+
+
