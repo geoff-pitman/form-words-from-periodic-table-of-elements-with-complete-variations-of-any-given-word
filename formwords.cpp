@@ -130,6 +130,7 @@ int main()
             {
                 cout << word << ": ***FAIL***" << endl << endl;
                 fail = true;
+                
                 break;
             }
             else if (variations[idx] == 2)
@@ -141,6 +142,7 @@ int main()
         if (fail)
         {
             fail = false;
+            
             continue;
         }
 
@@ -151,6 +153,7 @@ int main()
         {
             int trackexp = 0;
             wordtable.push_back(fill);
+            
             for (int idx2 = word.length()-1; idx2 >= 0; --idx2)
             {
                 if (variations[idx2] == 1)
@@ -158,8 +161,7 @@ int main()
                     if (conts[idx2] == '?')
                         wordtable[idx][idx2] = toupper(word[idx2]);
                     else
-                        wordtable[idx][idx2] = tolower(word[idx2]);
-                    
+                        wordtable[idx][idx2] = tolower(word[idx2]);         
                 }
                 else
                 {
@@ -195,6 +197,7 @@ int main()
                 if (islower(wordtable[idx][idx2]))
                 {
                     ++lower;
+                    
                     if (lower >= 2)
                     {
                         lowercheck = false;
