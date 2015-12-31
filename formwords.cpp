@@ -85,7 +85,7 @@ int main()
         uuxtrack = fill;  // used to keep track of possible special 3 char case
     
 ////////////////////////////////////////////////////////////////////////////////
-// FIND MATCHING LETTERS
+//                     FIND MATCHING LETTERS
 //////////////////////////////////////////////////////////////////////////////// 
 // 1 char symbols
         for (int idx = 0; idx < els1.size(); ++idx)
@@ -101,7 +101,6 @@ int main()
                 }
             }        
         }
- 
 // 2 char symbols 
         for (int idx = 0; idx < els2.size(); ++idx)
         {
@@ -129,8 +128,6 @@ int main()
                 }
             } 
         }
-           
-        
 /*
 !!!! special case 3-char-symbol check  !!! 
   Happens rarely, so check is used to make sure it matches.
@@ -156,10 +153,12 @@ Uut: *)Ta,Te,Tl,Tm
             }
         }
         
+        // if a 3-char-symbol match as been found...
+        // begin 3-char-symbol routine
         if (ucheck)
         {
            ifstream el3("el3.txt");
-           
+          
             while (el3 >> temp)
                 els3.push_back(temp);
             
@@ -233,13 +232,11 @@ Uut: *)Ta,Te,Tl,Tm
                 continue;   // fail, go to next word
             }
         }
-        
 ///////////////////////////////////////////////////////////////////////
+      
+///////////////////////////////////////////////////////////////////////
+//      DETERMINE IF AT LEAST ONE VARIATION OF WORD CAN BE FORMED     
 ///////////////////////////////////////////////////////////////////////         
-  
-///////////////////////////////////////////////////////////////////////
-////      CHECK WORD CAN FORM AT LEAST ONE VARIATION         //////////
-         
         // make sure there is a char in each column
         for(int idx = 0; idx < word.length(); ++idx)
         {
@@ -264,12 +261,10 @@ Uut: *)Ta,Te,Tl,Tm
             continue;  // fail, go to next word
         }
 //////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////
-////////////       BUILD VARIATIONS TABLE      /////////////////////////
+//                      BUILD VARIATIONS TABLE
 ////////////////////////////////////////////////////////////////////////
-
         // init map to where chars have 2 variations
         for (int idx = 0; idx < tablecount; ++idx)
             captrack.push_back(false);
@@ -311,10 +306,9 @@ Uut: *)Ta,Te,Tl,Tm
             }
         } 
 /////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////
-/////////       ELIMINATE ERRONEOUS VARIATIONS         ////////////////
+//     ELIMINATE ERRONEOUS VARIATIONS / STORE RESULTS  
 //////////////////////////////////////////////////////////////////////
         for (int idx = 0; idx < truthtable; ++idx)
         {
@@ -362,8 +356,6 @@ Uut: *)Ta,Te,Tl,Tm
                 results.push_back(wordtable[idx]);
         }
 ////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-
         // output results
         if (results.size() > 0)
         {
@@ -378,7 +370,6 @@ Uut: *)Ta,Te,Tl,Tm
         } 
         //else
             //cout << word << ": ***FAIL***" << endl << endl;
-        
     }
   
     // output program stats
