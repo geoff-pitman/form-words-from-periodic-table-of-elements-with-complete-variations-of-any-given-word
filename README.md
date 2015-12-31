@@ -1,6 +1,6 @@
 # form-words-from-periodic-table-of-elements-with-complete-variations-of-any-given-word
 General overview of algorithm
- 
+  
 1.  Match symbols to chars in word.
      a. Build a string with equal number of chars to word and fill it in with non alpha char. 
      ( word = element -> fill-word = ???????)
