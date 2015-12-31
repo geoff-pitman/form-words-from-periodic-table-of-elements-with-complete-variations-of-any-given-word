@@ -15,12 +15,12 @@ Finds ALL POSSIBLE variations.
      b. Identify char columns with variation
 4.  Build bit-wise truth table for word variations
      a. possible variations = 2^n where n is the number of char column variations
-5.  Eliminate fail cases
+5.  Eliminate variation fails
      a.  Two lower case chars in a row = FAIL
      b.  Two upper case chars in a row where first char is not element symbol = FAIL
           ex. LOsS would be an illegal variation because there is no L symbol.
-6. Ensure that all cases were not eliminated
-    a. If all cases fail it is a fail
+6. Ensure that all variations were not eliminated
+    a. If all variations fail then the word can not be formed
     b. Otherwise...store results!!
 (**Note**) A much more complicated algorithm is employed when a word
           contains a matching 3-char-symbol.  This happens extremely
