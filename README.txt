@@ -16,11 +16,9 @@ Finds ALL POSSIBLE variations.
 4.  Build bit-wise truth table for word variations
      a. possible variations = 2^n where n is the number of char column variations
 5.  Eliminate fail cases
-     a.  Two lower case chars in a row
-     b.  Two upper case chars in a row where first char is not element symbol
-          >let's assume Ti and In are only possible symbols
-          >word = tin -> Ti In -> Tin=fail , TIn=fail  
-          >even though matches are found and length is filled, it still fails
+     a.  Two lower case chars in a row = FAIL
+     b.  Two upper case chars in a row where first char is not element symbol = FAIL
+          ex. LOsS would be an illegal variation because there is no L symbol.
 6. Ensure that all cases were not eliminated
     a. If all cases fail it is a fail
     b. Otherwise...store results!!
@@ -49,16 +47,14 @@ Al?????
 ????O?? 
 ????Os? 
 ??????S
+
 - A, l, B are constants
 - (I,i) (N,n) (O,o) (S,s) are variants
 - variation map: 1 1 1 2 2 2 2
 -2x2x2x2 = 2^4 = 16 possible variations
 
-Simple two step check to eliminate illegal variations
-1. Two lower cases in a row
-2. If two upper cases, check to make sure previous upper has a matching 1 char symbol
-   ex. LOsS would be an illegal variation because there is no L symbol.
-
+-Set up captializtion variations just like truth table
+-Constants are just place holders
 A l B  
 _ _ _ i n o s -->fail: 2 lower 
       i n o S -->fail: 2 lower 
