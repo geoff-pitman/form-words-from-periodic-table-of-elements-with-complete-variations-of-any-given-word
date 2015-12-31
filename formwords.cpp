@@ -103,8 +103,8 @@ int main()
 
         for (int idx = 0; idx < word.length(); ++idx)
         {
-                if (uuxtrack[idx] == '?')
-                    twofail = true;
+            if (uuxtrack[idx] == '?')
+                twofail = true;
         }                
         
 /*
