@@ -1,4 +1,5 @@
-Form words and find ALL POSSIBLE variations from the symbols in the periodic table of elements.
+Form words from the symbols in the periodic table of elements.
+Finds ALL POSSIBLE variations.
 
 - GENERAL OVERVIEW OF ALGORITHM -
   
