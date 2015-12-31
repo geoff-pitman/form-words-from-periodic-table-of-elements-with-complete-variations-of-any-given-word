@@ -71,6 +71,7 @@ _ _ _ i n o s -->fail: 2 lower
 Simple two step check to eliminate illegal variations
 1. Two lower cases in a row
 2. If two upper cases, check to make sure previous upper has a matching 1 char symbol
+   ex. LOsS would be an illegal variation because there is no L symbol.
 
 8 variations found:
 [AlBINOS]
