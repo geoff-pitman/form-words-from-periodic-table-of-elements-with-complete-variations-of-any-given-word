@@ -25,7 +25,7 @@ int main()
     
     string word, temp, uuxtrack;
     vector<string> els1, els2, els3;
-    ifstream dict("ucheck.txt");
+    ifstream dict("dict.txt");
     ifstream el1("el1.txt");
     ifstream el2("el2.txt");
     
@@ -38,7 +38,7 @@ int main()
     while (dict >> word)
     {
         int truthtable = 1, tablecount = 0;
-        bool fail = false, ucheck = false, upass = false;
+        bool fail = false, ucheck = false, upass = false, twofail = false;
         string conts, fill;
         vector<bool> captrack;
         vector<int> variations;
@@ -99,7 +99,6 @@ int main()
             } 
         }
 
-        bool twofail = false;
         for (int idx = 0; idx < word.length(); ++idx)
         {
                 if (uuxtrack[idx] == '?')
