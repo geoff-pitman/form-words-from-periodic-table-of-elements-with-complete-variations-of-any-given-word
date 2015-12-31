@@ -57,21 +57,21 @@ Al?????
 -Constants are just place holders
 A l B  
 _ _ _ i n o s -->fail: 2 lower 
-      i n o S -->fail: 2 lower 
-      i n O s -->fail: 2 lower
-      i n O S -->fail: 2 lower
-      i N o s -->fail: 2 lower
-      i N o S -->SUCCESS
-      i N O s -->SUCCESS
-      i N O S -->SUCSESS
-      I n o s -->fail: 2 lower
-      I n o S -->fail: 2 lower
-      I n O s -->SUCCESS
-      I n O S -->SUCCESS
-      I N o s -->fail: 2 lower
-      I N o S -->SUCCESS
-      I N O s -->SUCCESS
-      I N O S -->SUCCESS
+_ _ _ i n o S -->fail: 2 lower 
+_ _ _ i n O s -->fail: 2 lower
+_ _ _ i n O S -->fail: 2 lower
+_ _ _ i N o s -->fail: 2 lower
+_ _ _ i N o S -->SUCCESS
+_ _ _ i N O s -->SUCCESS
+_ _ _ i N O S -->SUCSESS
+_ _ _ I n o s -->fail: 2 lower
+_ _ _ I n o S -->fail: 2 lower
+_ _ _ I n O s -->SUCCESS
+_ _ _ I n O S -->SUCCESS
+_ _ _ I N o s -->fail: 2 lower
+_ _ _ I N o S -->SUCCESS
+_ _ _ I N O s -->SUCCESS
+_ _ _ I N O S -->SUCCESS
 
 8 variations found:
 [AlBINOS]
