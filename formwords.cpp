@@ -25,7 +25,7 @@ int main()
     
     string word, temp, uuxtrack;
     vector<string> els1, els2, els3;
-    ifstream dict("dict.txt");
+    ifstream dict("ucheck.txt");
     ifstream el1("el1.txt");
     ifstream el2("el2.txt");
     
@@ -100,14 +100,18 @@ int main()
             } 
         }
 
+        bool twofail = false;
+        for (int idx = 0; idx < word.length(); ++idx)
+        {
+                if (uuxtrack[idx] == '?')
+                    twofail = true;
+        }                
 
 
 /*
 !!!! special case 3-char-symbol check  !!! 
   Happens rarely, so check is used to make sure it matches.
-  (In fact, there are no words in the english language that
-  have a match...buuuuuut...)
-  If a match is found for one of the 3-char symbols, the rest
+  If a match is found for one of the 3 char symbols, the rest
   of the process is initiated.  
 Uuo: O)safe
 Uup: P)a,d,m,r,t
@@ -154,17 +158,36 @@ Uut: *)Ta,Te,Tl,Tm
                 upass = true;
                 if (uuxtrack[idx] == '?')
                     upass = false;  
+                
+                
+                if (idx < word.length() - 3 && uuxtrack[idx] == 'U' && uuxtrack[idx+1] == 'u'
+                                && islower(uuxtrack[idx+2]) && islower(uuxtrack[idx+3]))
+                {
+                   for (int idx2 = 0; idx2 < els1.size(); idx2++)
+                   {
+                       upass = false;
+                       if (toupper(uuxtrack[idx+3]) == els1[idx2][0])
+                       {
+                           upass = true;
+                           uuxtrack[idx+3] = toupper(uuxtrack[idx+3]);
+                       }
+                   }
+                }
             }
-        
+            
             if (upass)
             {
                 results.push_back(uuxtrack);
-                cout << word << ": " << results.size() << " variation(s) found... \n";
+                
+               if (twofail)
+               {                   
+                    cout << word << ": " << results.size() << " variation(s) found... \n";
          
-                for (int idx = 0; idx < results.size(); ++idx)
-                    cout << "[" << results[idx] << "]\n";
-        
-                continue;     
+                    for (int idx = 0; idx < results.size(); ++idx)
+                        cout << "[" << results[idx] << "]\n";
+                
+                    continue;
+               }
             }
             else
             {
@@ -251,9 +274,7 @@ Uut: *)Ta,Te,Tl,Tm
                 {
                     ++lower;
                     
-                    if (ucheck && lower >= 2 && idx2 < word.length()-2 && wordtable[idx][idx2-2] == 'U' && wordtable[idx][idx2-1] == 'u')
-                        lower = 0;
-                    else if (lower >= 2)
+                if (lower >= 2)
                     {
                         lowercheck = false;
                         
