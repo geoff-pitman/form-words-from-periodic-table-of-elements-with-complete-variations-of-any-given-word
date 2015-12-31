@@ -1,4 +1,4 @@
-General overview of algorithm
+- GENERAL OVERVIEW OF ALGORITHM -
   
 1.  Match symbols to chars in word.
      a. Build a string with equal number of chars to word and fill it in with non alpha char. 
@@ -21,8 +21,6 @@ General overview of algorithm
 6. Ensure that all cases were not eliminated
     a. If all cases fail it is a fail
     b. Otherwise...store results!!
-
-
 (**Note**) A much more complicated algorithm is employed when a word
           contains a matching 3-char-symbol.  This happens extremely
           rarely, as there are no English words that contain them.
@@ -32,8 +30,8 @@ General overview of algorithm
           the 3-char-symbol is identified, if the word can not
           be formed with 1 and 2 char symbols.
 
-!!!!!!!!!EXAMPLE!!!!!!!!
-albinos
+- EXAMPLE -
+WORD = albinos
 Al????? 
 ?B????? 
 ?Bi???? 
