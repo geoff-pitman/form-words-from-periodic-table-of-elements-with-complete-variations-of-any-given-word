@@ -135,7 +135,6 @@ Uut: *)Ta,Te,Tl,Tm
             }
         }
         
-                
         if (ucheck)
         {
            ifstream el3("el3.txt");
@@ -241,12 +240,10 @@ Uut: *)Ta,Te,Tl,Tm
             continue;  // fail, go to next word
         }
 
-        
         // init map to where chars have 2 variations
         for (int idx = 0; idx < tablecount; ++idx)
             captrack.push_back(false);
-   
-   
+ 
         // build all possible variations of formed word
         for (int idx = 0; idx < truthtable; ++idx)
         {
