@@ -23,7 +23,7 @@ int main()
     float stopwatch;
     gettimeofday(&start, NULL); 
     
-    int totalvars = 0, totalwords = 0;
+    int totalvars = 0, totalwords = 0, success = 0;
     string word, temp, uuxtrack;
     vector<string> els1, els2, els3;
     ifstream dict("dict.txt");
@@ -181,7 +181,8 @@ Uut: *)Ta,Te,Tl,Tm
                 
                if (twofail)
                {                  
-                    totalvars += results.size();                    
+                    totalvars += results.size();
+                    ++success;                    
                     cout << word << ": " << results.size() << " variation(s) found... \n";
          
                     for (int idx = 0; idx < results.size(); ++idx)
@@ -312,7 +313,8 @@ Uut: *)Ta,Te,Tl,Tm
     
         if (results.size() > 0)
         {
-            totalvars += results.size();     
+            totalvars += results.size();
+            ++success;            
             cout << word << ": " << results.size() << " variation(s) found... \n";
          
             for (int idx = 0; idx < results.size(); ++idx)
@@ -326,7 +328,8 @@ Uut: *)Ta,Te,Tl,Tm
   
     gettimeofday(&end, NULL);
     stopwatch = gettime_ms(start, end);
-    cout << "Total words: " << totalwords << endl
+    cout << "Total words checked: " << totalwords << endl
+         << "Total words formed: " << success << endl
          << "Total variations: " << totalvars << endl;
     printf("Runtime: %.3f ms\n", stopwatch);
     
