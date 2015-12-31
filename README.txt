@@ -1,4 +1,3 @@
-# form-words-from-periodic-table-of-elements-with-complete-variations-of-any-given-word
 General overview of algorithm
   
 1.  Match symbols to chars in word.
