@@ -1,3 +1,5 @@
+Form words and find ALL POSSIBLE variations from the symbols in the periodic table of elements.
+
 - GENERAL OVERVIEW OF ALGORITHM -
   
 1.  Match symbols to chars in word.
@@ -27,10 +29,14 @@
           However, for completeness' sake, I am in the process of
           writing it.  As of now, words with matching 3-char-symbols
           are identified and matched, but only one variation with
-          the 3-char-symbol is identified, if the word can not
-          be formed with 1 and 2 char symbols.
+          the 3-char-symbol is identified. If 1 and 2 char symbol
+          variations can be formed (for example: uus can be matched
+          with U and S so it will always pass a 1 and 2 char symbol
+          check), then the normal routine will execute.
 
-- EXAMPLE -
+================================================================================          
+
+- RANDOM EXAMPLE -
 WORD = albinos
 Al????? 
 ?B????? 
