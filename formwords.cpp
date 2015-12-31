@@ -8,6 +8,8 @@
 
 using namespace std;
 
+
+// convert time struct values to milliseconds
 float gettime_ms(struct timeval start, struct timeval end)
 {
     float secs  = end.tv_sec  - start.tv_sec;
@@ -19,6 +21,7 @@ float gettime_ms(struct timeval start, struct timeval end)
 
 int main()
 {
+    // used to get time stats
     struct timeval start, end;
     float stopwatch;
     gettimeofday(&start, NULL); 
@@ -26,36 +29,40 @@ int main()
     int totalvars = 0, totalwords = 0, success = 0;
     string word, temp, uuxtrack;
     vector<string> els1, els2, els3;
-    ifstream dict("dict.txt");
+    ifstream dict("ucheck.txt");
     ifstream el1("el1.txt");
     ifstream el2("el2.txt");
     
+    // load 1 char symbols
     while (el1 >> temp)
         els1.push_back(temp);
-     
+    // load 2 char symbols
     while (el2 >> temp)
         els2.push_back(temp);
     
+    // load words from dictionary 
     while (dict >> word)
     {
-        ++totalwords;
         int truthtable = 1, tablecount = 0;
         bool fail = false, ucheck = false, upass = false, twofail = false;
         string conts, fill;
         vector<bool> captrack;
         vector<int> variations;
         vector<string> wordtable, results;
+             
+        ++totalwords;   // for program stats
  
+        // init char symbol variations map
         for(int idx = 0; idx < word.length(); ++idx)
             variations.push_back(0);
     
+        // init the place holder fill var with non alpha chars
         for(int idx = 0; idx < word.length(); ++idx)
             fill += "?";
     
-        conts = fill;
-        uuxtrack = fill;
+        conts = fill;  // used to keep track of chars with no variation
+        uuxtrack = fill;  // used to keep track of possible special 3 char case
     
- 
 ////////////////////////////////////////////////////////////////////////////////
 // FIND MATCHING LETTERS
 //////////////////////////////////////////////////////////////////////////////// 
@@ -93,19 +100,15 @@ int main()
                     ++idx2;
                     ++variations[idx2];
                 
+                    // check for char symbol constants
                     if (variations[idx2] == 1)
-                        conts[idx2] = els2[idx][1];
+                        conts[idx2] = els2[idx][1];  
                     else if (variations[idx2] > 1)
                         conts[idx2] = '?';
                 }
             } 
         }
-
-        for (int idx = 0; idx < word.length(); ++idx)
-        {
-            if (uuxtrack[idx] == '?')
-                twofail = true;
-        }                
+           
         
 /*
 !!!! special case 3-char-symbol check  !!! 
@@ -132,6 +135,7 @@ Uut: *)Ta,Te,Tl,Tm
             }
         }
         
+                
         if (ucheck)
         {
            ifstream el3("el3.txt");
@@ -175,10 +179,19 @@ Uut: *)Ta,Te,Tl,Tm
                 }
             }
             
+            // if UuX check fails, continue to normal routine
             if (upass)
             {
+                // check to see if word can be formed without 3-char-symbol
+                for (int idx = 0; idx < word.length(); ++idx)
+                {
+                    if (uuxtrack[idx] == '?')
+                        twofail = true;
+                }        
+                
                 results.push_back(uuxtrack);
                 
+               // if word can only be formed with 3-char-symbol then spit out results
                if (twofail)
                {                  
                     totalvars += results.size();
@@ -190,20 +203,21 @@ Uut: *)Ta,Te,Tl,Tm
                     
                     cout << endl;
                 
-                    continue;
+                    continue;  // success, go to next word
                }
             }
             else
             {
                 //cout << word << ": ***FAIL***" << endl << endl;
             
-                continue;
+                continue;   // fail, go to next word
             }
         }
         
 ///////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////         
          
+        // make sure there is a char in each column
         for(int idx = 0; idx < word.length(); ++idx)
         {
             if (variations[idx] == 0)
@@ -211,24 +225,29 @@ Uut: *)Ta,Te,Tl,Tm
                 //cout << word << ": ***FAIL***" << endl << endl;
                 fail = true;
                 
-                break;
+                break;  // fail, break out of for loop
             }
             else if (variations[idx] == 2)
             {
-                truthtable *= 2;
-                ++tablecount;
+                truthtable *= 2;   // total variations of word is factor of 2
+                ++tablecount;      // keep track of 2's power  (2^tablecount)
+                                   // i.e the times there are 2 variations of a char
             }
         }
         if (fail)
         {
-            fail = false;
+            fail = false;  // reset value for next word
             
-            continue;
+            continue;  // fail, go to next word
         }
 
+        
+        // init map to where chars have 2 variations
         for (int idx = 0; idx < tablecount; ++idx)
             captrack.push_back(false);
    
+   
+        // build all possible variations of formed word
         for (int idx = 0; idx < truthtable; ++idx)
         {
             int trackexp = 0;
@@ -265,7 +284,7 @@ Uut: *)Ta,Te,Tl,Tm
             }
         } 
         
-        
+        // eliminate erroneous variations
         for (int idx = 0; idx < truthtable; ++idx)
         {
             int lower = 0;
@@ -307,10 +326,12 @@ Uut: *)Ta,Te,Tl,Tm
                 }
             }
            
+           // store successful variations
             if (elscheck && lowercheck) 
                 results.push_back(wordtable[idx]);
         }
-    
+        
+        // output results
         if (results.size() > 0)
         {
             totalvars += results.size();
@@ -326,6 +347,7 @@ Uut: *)Ta,Te,Tl,Tm
             //cout << word << ": ***FAIL***" << endl << endl;
     }
   
+    // output program stats
     gettimeofday(&end, NULL);
     stopwatch = gettime_ms(start, end);
     cout << "Total words checked: " << totalwords << endl
