@@ -38,7 +38,7 @@ int main()
         els1.push_back(temp);
     // load 2 char symbols
     while (el2 >> temp)
-        els2.push_back(temp);
+        els2.push_back(temp); 
     
     // load words from dictionary 
     while (dict >> word)
@@ -62,13 +62,13 @@ int main()
                     ++totalvars;
                     ++success;
                     cout << word << ": " << results.size() << " variation(s) found... \n"
-                        << "[" << results[idx] << "]\n";
+                         << "[" << results[idx] << "]\n";
 
                     continue;   // success, get next word
                 }
             }  
 
-            cout << word << ": ***FAIL***" << endl << endl;
+            //cout << word << ": ***FAIL***" << endl << endl;
             
             continue;  // fail, go to next word
         }
@@ -228,7 +228,7 @@ Uut: *)Ta,Te,Tl,Tm
             }
             else
             {
-                cout << word << ": ***FAIL***" << endl << endl;
+                //cout << word << ": ***FAIL***" << endl << endl;
             
                 continue;   // fail, go to next word
             }
@@ -256,7 +256,7 @@ Uut: *)Ta,Te,Tl,Tm
         }
         if (fail)
         {
-            cout << word << ": ***FAIL***" << endl << endl;
+            //cout << word << ": ***FAIL***" << endl << endl;
             
             continue;  // fail, go to next word
         }
@@ -361,8 +361,9 @@ Uut: *)Ta,Te,Tl,Tm
         
             cout << endl;
         } 
-        else
-            cout << word << ": ***FAIL***" << endl << endl;
+        //else
+            //cout << word << ": ***FAIL***" << endl << endl;
+        
     }
   
     // output program stats
@@ -371,7 +372,7 @@ Uut: *)Ta,Te,Tl,Tm
     cout << "Total words checked: " << totalwords << endl
          << "Total words formed: " << success << endl
          << "Total variations: " << totalvars << endl;
-    printf("Runtime: %.3f ms\n", stopwatch);
+    //printf("Runtime: %.3f ms\n", stopwatch);
     
     return 0;
 }
