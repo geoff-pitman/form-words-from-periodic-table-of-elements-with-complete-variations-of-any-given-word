@@ -36,8 +36,8 @@ Finds ALL POSSIBLE variations.
           check), then the normal routine will execute.
 
 ================================================================================          
-
 - RANDOM EXAMPLE -
+
 WORD = albinos
 Al????? 
 ?B????? 
@@ -49,11 +49,15 @@ Al?????
 ????O?? 
 ????Os? 
 ??????S
--A is always upper, l is always lower, B is always upper
--3 char constants, 4 chars that vary.  only 2 possible variations, upper or lower,
--so we can create truth table!!!
+- A, l, B are constants
+- (I,i) (N,n) (O,o) (S,s) are variants
+- variation map: 1 1 1 2 2 2 2
 -2x2x2x2 = 2^4 = 16 possible variations
--a, l, b are constants
+
+Simple two step check to eliminate illegal variations
+1. Two lower cases in a row
+2. If two upper cases, check to make sure previous upper has a matching 1 char symbol
+   ex. LOsS would be an illegal variation because there is no L symbol.
 
 A l B  
 _ _ _ i n o s -->fail: 2 lower 
@@ -72,11 +76,6 @@ _ _ _ i n o s -->fail: 2 lower
       I N o S -->SUCCESS
       I N O s -->SUCCESS
       I N O S -->SUCCESS
-      
-Simple two step check to eliminate illegal variations
-1. Two lower cases in a row
-2. If two upper cases, check to make sure previous upper has a matching 1 char symbol
-   ex. LOsS would be an illegal variation because there is no L symbol.
 
 8 variations found:
 [AlBINOS]
