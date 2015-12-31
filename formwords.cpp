@@ -84,7 +84,6 @@ int main()
                     uuxtrack[idx2] = els2[idx][0];
                     temp[idx2+1] = els2[idx][1];
                     uuxtrack[idx2+1] = els2[idx][1];
-                    
                 
                     if (variations[idx2] == 0)
                         ++variations[idx2];
@@ -106,8 +105,7 @@ int main()
                 if (uuxtrack[idx] == '?')
                     twofail = true;
         }                
-
-
+        
 /*
 !!!! special case 3-char-symbol check  !!! 
   Happens rarely, so check is used to make sure it matches.
@@ -158,14 +156,14 @@ Uut: *)Ta,Te,Tl,Tm
                 upass = true;
                 if (uuxtrack[idx] == '?')
                     upass = false;  
-                
-                
+                    
                 if (idx < word.length() - 3 && uuxtrack[idx] == 'U' && uuxtrack[idx+1] == 'u'
-                                && islower(uuxtrack[idx+2]) && islower(uuxtrack[idx+3]))
+                                            && islower(uuxtrack[idx+2]) && islower(uuxtrack[idx+3]))
                 {
                    for (int idx2 = 0; idx2 < els1.size(); idx2++)
                    {
                        upass = false;
+                       
                        if (toupper(uuxtrack[idx+3]) == els1[idx2][0])
                        {
                            upass = true;
