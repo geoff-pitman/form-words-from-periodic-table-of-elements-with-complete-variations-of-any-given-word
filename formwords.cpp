@@ -272,15 +272,14 @@ Uut: *)Ta,Te,Tl,Tm
                 {
                     ++lower;
                     
-                if (lower >= 2)
+                    if (lower >= 2)
                     {
                         lowercheck = false;
                         
                         break;
                     }
                 }
-                
-                if (isupper(wordtable[idx][idx2]))
+               else if (isupper(wordtable[idx][idx2]))
                     lower = 0;
                 
                 if (isupper(wordtable[idx][idx2]) && idx2 < word.length()-1 && isupper(wordtable[idx][idx2+1]))
