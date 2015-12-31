@@ -153,6 +153,7 @@ Uut: *)Ta,Te,Tl,Tm
             for (int idx = 0; idx < word.length(); ++idx)
             {
                 upass = true;
+                
                 if (uuxtrack[idx] == '?')
                     upass = false;  
                     
