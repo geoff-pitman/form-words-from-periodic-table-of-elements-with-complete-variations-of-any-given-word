@@ -29,7 +29,7 @@ int main()
     int totalvars = 0, totalwords = 0, success = 0;
     string word, temp, uuxtrack;
     vector<string> els1, els2, els3;
-    ifstream dict("dict.txt");
+    ifstream dict("eng.txt");
     ifstream el1("el1.txt");
     ifstream el2("el2.txt");
     
@@ -43,15 +43,35 @@ int main()
     // load words from dictionary 
     while (dict >> word)
     {
+        
         int truthtable = 1, tablecount = 0;
         bool fail = false, ucheck = false, upass = false, twofail = false;
         string conts, fill;
         vector<bool> captrack;
         vector<int> variations;
         vector<string> wordtable, results;
-             
+        
         ++totalwords;   // for program stats
- 
+        
+        // check for single char words
+        if (word.length() < 2)
+        {
+            for (int idx = 0; idx < els1.size(); ++idx)
+            {
+                if (word[0] == tolower(els1[idx][0]))        
+                {
+                    ++totalvars;
+                    ++success;
+                    cout << word << ": " << results.size() << " variation(s) found... \n"
+                        << "[" << results[idx] << "]\n";
+
+                    continue;   // success, get next word
+                }
+            }  
+            
+            continue;    // fail, get next word
+        }
+             
         // init char symbol variations map
         for(int idx = 0; idx < word.length(); ++idx)
             variations.push_back(0);
@@ -234,11 +254,11 @@ Uut: *)Ta,Te,Tl,Tm
             }
         }
         if (fail)
-        {
-            fail = false;  // reset value for next word
+       // {
+       //     fail = false;  // reset value for next word
             
             continue;  // fail, go to next word
-        }
+        //}
 
         // init map to where chars have 2 variations
         for (int idx = 0; idx < tablecount; ++idx)
