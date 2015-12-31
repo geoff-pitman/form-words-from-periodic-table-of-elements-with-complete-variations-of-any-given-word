@@ -29,7 +29,7 @@ int main()
     int totalvars = 0, totalwords = 0, success = 0;
     string word, temp, uuxtrack;
     vector<string> els1, els2, els3;
-    ifstream dict("eng.txt");
+    ifstream dict("dictionaryEng.txt");
     ifstream el1("el1.txt");
     ifstream el2("el2.txt");
     
