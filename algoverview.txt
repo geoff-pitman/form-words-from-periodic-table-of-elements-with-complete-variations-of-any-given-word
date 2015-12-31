@@ -1,0 +1,23 @@
+General overview of algorithm
+
+1.  Match symbols to chars in word.
+     a. Build a string with equal number of chars to word and fill it in with non alpha char. 
+     ( word = element -> fill-word = ???????)
+     b. Place each matching symbol in its own fill-word string
+              i.  Ex: word = cures -> C???? Cu??? ??Re? ????S ?U???
+2.  Ensure each char column is filled
+     a. If a column yields 0 it is automatic fail
+3.  Check to see if there is capitalized variation in char column
+     a. Identify char columns with no variation
+     b. Identify char columns with variation
+4.  Build bit-wise truth table for word variations
+     a. possible variations = 2^n where n is the number of char column variations
+5.  Eliminate fail cases
+     a.  Two lower case chars in a row
+     b.  Two upper case chars in a row where first char is not element symbol
+6. Ensure that all cases were not eliminated
+    a. If all cases fail it is a fail
+    b. Otherwise...store results!!
+
+**Note**It is possible resulting case is crossed out and no matching cases are found 
+(word = tin -> Ti In -> Tin=fail , TIn=fail  (made up elements.  assume Ti and In are only possible symbols). 
