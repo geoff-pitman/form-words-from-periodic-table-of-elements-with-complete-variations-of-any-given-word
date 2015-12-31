@@ -23,3 +23,62 @@ General overview of algorithm
 a.)--let's assume Ti and In are only possible symbols
 b.)--word = tin -> Ti In -> Tin=fail , TIn=fail  
 c.)--even though matches are found and length is filled, it still fails
+**Note2.) A much more complicated algorithm is employed when a word
+          contains a matching 3-char-symbol.  This happens extremely
+          rarely, as there are no English words that contain them.
+          However, for completeness' sake, I am in the process of
+          writing it.  As of now, words with matching 3-char-symbols
+          are identified and matched, but only one variation with
+          the 3-char-symbol is identified, if the word can not
+          be formed with 1 and 2 char symbols.
+
+!!!!!!!!!EXAMPLE!!!!!!!!
+albinos
+Al????? 
+?B????? 
+?Bi???? 
+??I???? 
+??In??? 
+???N??? 
+???No?? 
+????O?? 
+????Os? 
+??????S
+-A is always upper, l is always lower, B is always upper
+-3 char constants, 4 chars that vary.  only 2 possible variations, upper or lower,
+-so we can create truth table!!!
+-2x2x2x2 = 2^4 = 16 possible variations
+-a, l, b are constants
+
+A l B  
+_ _ _ i n o s -->fail: 2 lower 
+      i n o S -->fail: 2 lower 
+      i n O s -->fail: 2 lower
+      i n O S -->fail: 2 lower
+      i N o s -->fail: 2 lower
+      i N o S -->SUCCESS
+      i N O s -->SUCCESS
+      i N O S -->SUCSESS
+      I n o s -->fail: 2 lower
+      I n o S -->fail: 2 lower
+      I n O s -->SUCCESS
+      I n O S -->SUCCESS
+      I N o s -->fail: 2 lower
+      I N o S -->SUCCESS
+      I N O s -->SUCCESS
+      I N O S -->SUCCESS
+      
+Simple two step check to eliminate illegal variations
+1. Two lower cases in a row
+2. If two upper cases, check to make sure previous upper has a matching 1 char symbol
+
+8 variations found:
+[AlBINOS]
+[AlBINOs]
+[AlBINoS]
+[AlBInOS]
+[AlBInOs]
+[AlBiNOS]
+[AlBiNOs]
+[AlBiNoS]
+
