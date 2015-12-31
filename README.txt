@@ -15,15 +15,15 @@ General overview of algorithm
 5.  Eliminate fail cases
      a.  Two lower case chars in a row
      b.  Two upper case chars in a row where first char is not element symbol
+          >let's assume Ti and In are only possible symbols
+          >word = tin -> Ti In -> Tin=fail , TIn=fail  
+          >even though matches are found and length is filled, it still fails
 6. Ensure that all cases were not eliminated
-    a. If all cases fail it is a fail (*see Note1 below.)
+    a. If all cases fail it is a fail
     b. Otherwise...store results!!
 
-*Note1.) It is possible a case is crossed out and no matching cases are found
-a.)--let's assume Ti and In are only possible symbols
-b.)--word = tin -> Ti In -> Tin=fail , TIn=fail  
-c.)--even though matches are found and length is filled, it still fails
-**Note2.) A much more complicated algorithm is employed when a word
+
+(**Note**) A much more complicated algorithm is employed when a word
           contains a matching 3-char-symbol.  This happens extremely
           rarely, as there are no English words that contain them.
           However, for completeness' sake, I am in the process of
