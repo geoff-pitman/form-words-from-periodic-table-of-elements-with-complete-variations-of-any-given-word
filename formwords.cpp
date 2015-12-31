@@ -43,7 +43,6 @@ int main()
     // load words from dictionary 
     while (dict >> word)
     {
-        
         int truthtable = 1, tablecount = 0;
         bool fail = false, ucheck = false, upass = false, twofail = false;
         string conts, fill;
@@ -68,8 +67,10 @@ int main()
                     continue;   // success, get next word
                 }
             }  
+
+            cout << word << ": ***FAIL***" << endl << endl;
             
-            continue;    // fail, get next word
+            continue;  // fail, go to next word
         }
              
         // init char symbol variations map
@@ -227,7 +228,7 @@ Uut: *)Ta,Te,Tl,Tm
             }
             else
             {
-                //cout << word << ": ***FAIL***" << endl << endl;
+                cout << word << ": ***FAIL***" << endl << endl;
             
                 continue;   // fail, go to next word
             }
@@ -254,11 +255,11 @@ Uut: *)Ta,Te,Tl,Tm
             }
         }
         if (fail)
-       // {
-       //     fail = false;  // reset value for next word
+        {
+            cout << word << ": ***FAIL***" << endl << endl;
             
             continue;  // fail, go to next word
-        //}
+        }
 
         // init map to where chars have 2 variations
         for (int idx = 0; idx < tablecount; ++idx)
@@ -360,8 +361,8 @@ Uut: *)Ta,Te,Tl,Tm
         
             cout << endl;
         } 
-        //else
-            //cout << word << ": ***FAIL***" << endl << endl;
+        else
+            cout << word << ": ***FAIL***" << endl << endl;
     }
   
     // output program stats
