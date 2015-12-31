@@ -186,6 +186,8 @@ Uut: *)Ta,Te,Tl,Tm
          
                     for (int idx = 0; idx < results.size(); ++idx)
                         cout << "[" << results[idx] << "]\n";
+                    
+                    cout << endl;
                 
                     continue;
                }
