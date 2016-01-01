@@ -213,7 +213,8 @@ Uut: *)Ta,Te,Tl,Tm
                 }
             }
             
-            // if UuX check fails, continue to normal routine
+            // if UuX check passes AND formed word has more than one possible
+            //     variation, fall through to normal routine
             if (upass)
             {
                 results.push_back(uuxtrack);
