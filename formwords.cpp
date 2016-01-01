@@ -29,7 +29,7 @@ int main()
     int totalvars = 0, totalwords = 0, success = 0;
     string word, temp, uuxtrack;
     vector<string> els1, els2, els3;
-    ifstream dict("dictionaryEng.txt");
+    ifstream dict("ucheck.txt");
     ifstream el1("el1.txt");
     ifstream el2("el2.txt");
     
@@ -186,9 +186,11 @@ Uut: *)Ta,Te,Tl,Tm
                 upass = true;
                 
                 if (uuxtrack[idx] == '?')
+                {
                     upass = false;  
-                    
-                if (idx < word.length() - 3 && uuxtrack[idx] == 'U' && uuxtrack[idx+1] == 'u'
+                    break;    // fail, get next word
+                }
+                else if (idx < word.length() - 3 && uuxtrack[idx] == 'U' && uuxtrack[idx+1] == 'u'
                                             && islower(uuxtrack[idx+2]) && islower(uuxtrack[idx+3]))
                 {
                    for (int idx2 = 0; idx2 < els1.size(); idx2++)
