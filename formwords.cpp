@@ -214,19 +214,19 @@ Uut: *)Ta,Te,Tl,Tm
                {                  
                     totalvars += results.size();
                     ++success;                    
-                    outf << word << ": " << results.size() << " variation(s) found... \n";
+                    cout << word << ": " << results.size() << " variation(s) found... \n";
          
                     for (int idx = 0; idx < results.size(); ++idx)
-                        outf << "[" << results[idx] << "]\n";
+                        cout << "[" << results[idx] << "]\n";
                     
-                    outf << endl;
+                    cout << endl;
                 
                     continue;  // success, go to next word
                }
             }
             else
             {
-                //outf << word << ": ***FAIL***" << endl << endl;
+                //cout << word << ": ***FAIL***" << endl << endl;
             
                 continue;   // fail, go to next word
             }
