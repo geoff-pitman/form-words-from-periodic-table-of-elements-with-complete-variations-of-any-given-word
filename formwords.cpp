@@ -71,13 +71,13 @@ int main()
                     cout << word << ": " << results.size() << " variation(s) found... \n"
                          << "[" << results[idx] << "]\n";
 
-                    continue;   // success, get next word
+                    continue;   // success, go on to next word
                 }
             }  
 
             //cout << word << ": ***FAIL***" << endl << endl;
             
-            continue;  // fail, go to next word
+            continue;  // fail, go on to next word
         }
              
         // init char symbol variations map
@@ -195,7 +195,7 @@ Uut: *)Ta,Te,Tl,Tm
                 if (uuxtrack[idx] == '?')
                 {
                     upass = false;  
-                    break;    // fail, get next word
+                    break;    // fail, go on to next word
                 }
                 else if (idx < word.length() - 3 && uuxtrack[idx] == 'U' && uuxtrack[idx+1] == 'u'
                                             && islower(uuxtrack[idx+2]) && islower(uuxtrack[idx+3]))
@@ -230,14 +230,14 @@ Uut: *)Ta,Te,Tl,Tm
                     
                     cout << endl;
                 
-                    continue;  // success, go to next word
+                    continue;  // success, go on to next word
                }
             }
             else
             {
                 //cout << word << ": ***FAIL***" << endl << endl;
             
-                continue;   // fail, go to next word
+                continue;   // fail, go on to next word
             }
         }      
 ///////////////////////////////////////////////////////////////////////
@@ -266,7 +266,7 @@ Uut: *)Ta,Te,Tl,Tm
         {
             //cout << word << ": ***FAIL***" << endl << endl;
             
-            continue;  // fail, go to next word
+            continue;  // fail, go on to next word
         }
 //////////////////////////////////////////////////////////////////////////
 
@@ -334,7 +334,7 @@ Uut: *)Ta,Te,Tl,Tm
                     {
                         lowercheck = false;
                         
-                        break;
+                        break; //  variation failed, continue processing variations
                     }
                 }
                 else if (isupper(wordtable[idx][idx2]))
@@ -349,13 +349,12 @@ Uut: *)Ta,Te,Tl,Tm
                         if (els1[idx3][0] == wordtable[idx][idx2])
                         {
                             elscheck = true;
-                            
-                            continue;
+                            break;   // we're okay, continue processing variations
                         }
                     }
                     
                     if (elscheck == false)
-                        break;
+                        break;     // variation failed, continue processing variations
                 }
             }
            
