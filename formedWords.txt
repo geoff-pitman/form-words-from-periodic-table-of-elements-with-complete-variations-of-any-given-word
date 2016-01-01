@@ -4,8 +4,8 @@ with more variations of words, I would really like
 to see!!
 
 Total words checked from dictionaryEng.txt: 109582
-Total words formed: 15049
-Total variations of formed words: 26561
+Total words formed: 15048
+Total variations of formed words: 26560
 ====================================================
 ac: 1 variation(s) found... 
 [Ac]
@@ -28631,9 +28631,6 @@ mown: 1 variation(s) found...
 
 mows: 1 variation(s) found... 
 [MoWS]
-
-muumuus: 1 variation(s) found... 
-[?UU?Uus]
 
 na: 1 variation(s) found... 
 [Na]
