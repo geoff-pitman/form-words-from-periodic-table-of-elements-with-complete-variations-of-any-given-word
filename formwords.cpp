@@ -1,3 +1,10 @@
+/*   
+Author: Geoffrey Pitman
+Creation Date: Dec 27, 2015
+
+Form words with element abbreviations from periodic table of elements.
+Find ALL POSSIBLE VARIATIONS of each word!
+*/
 #include <iostream>
 #include <vector>
 #include <fstream>
