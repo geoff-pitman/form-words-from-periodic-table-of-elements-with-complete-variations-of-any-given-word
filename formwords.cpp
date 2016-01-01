@@ -152,16 +152,22 @@ Uut: *)Ta,Te,Tl,Tm
                     ucheck = true;
             }
         }
-        
-        // if a 3-char-symbol match as been found...
-        // begin 3-char-symbol routine
+
         if (ucheck)
         {
+
            ifstream el3("el3.txt");
-          
+           
             while (el3 >> temp)
                 els3.push_back(temp);
             
+            // check to see if word can be formed without 3-char-symbol
+            for (int idx = 0; idx < word.length(); ++idx)
+            {
+                if (uuxtrack[idx] == '?')
+                    twofail = true;
+            }        
+                
             for (int idx = 0; idx < els3.size(); ++idx)
             {   
                 for (int idx2 = 0; idx2 < word.length()-1; ++idx2)
@@ -201,13 +207,6 @@ Uut: *)Ta,Te,Tl,Tm
             // if UuX check fails, continue to normal routine
             if (upass)
             {
-                // check to see if word can be formed without 3-char-symbol
-                for (int idx = 0; idx < word.length(); ++idx)
-                {
-                    if (uuxtrack[idx] == '?')
-                        twofail = true;
-                }        
-                
                 results.push_back(uuxtrack);
                 
                // if word can only be formed with 3-char-symbol then spit out results
@@ -215,23 +214,23 @@ Uut: *)Ta,Te,Tl,Tm
                {                  
                     totalvars += results.size();
                     ++success;                    
-                    cout << word << ": " << results.size() << " variation(s) found... \n";
+                    outf << word << ": " << results.size() << " variation(s) found... \n";
          
                     for (int idx = 0; idx < results.size(); ++idx)
-                        cout << "[" << results[idx] << "]\n";
+                        outf << "[" << results[idx] << "]\n";
                     
-                    cout << endl;
+                    outf << endl;
                 
                     continue;  // success, go to next word
                }
             }
             else
             {
-                //cout << word << ": ***FAIL***" << endl << endl;
+                //outf << word << ": ***FAIL***" << endl << endl;
             
                 continue;   // fail, go to next word
             }
-        }
+        }      
 ///////////////////////////////////////////////////////////////////////
       
 ///////////////////////////////////////////////////////////////////////
