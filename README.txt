@@ -1,4 +1,4 @@
-Form words from the element abbreviations in the periodic table of elements.
+Form words from element abbreviations in the periodic table of elements.
 Find ALL POSSIBLE variations.
 
 - GENERAL OVERVIEW OF ALGORITHM -
