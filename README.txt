@@ -47,24 +47,26 @@ Al?????
 ????O?? 
 ????Os? 
 ??????S
+- All char columns are filled so we're good so far
 
 - A, l, B are constants
 - (I,i) (N,n) (O,o) (S,s) are variants
-- variation map: 1 1 1 2 2 2 2
--2x2x2x2 = 2^4 = 16 possible variations
+- Variation map: 1 1 1 2 2 2 2
+- Possible variations = 2x2x2x2 = 2^4 = 16 possible variations
+- 0 1 2 3 4 5 6 7 = index (letter positions)
+- 1 1 1 2 2 2 2 2 = map char variation to index
 
--Set up captializtion variations just like truth table
--Constants are just place holders
+Now build 3 bit truth table - constants are ignored...
 A l B  
-_ _ _ i n o s -->fail: 2 lower 
-_ _ _ i n o S -->fail: 2 lower 
-_ _ _ i n O s -->fail: 2 lower
-_ _ _ i n O S -->fail: 2 lower
-_ _ _ i N o s -->fail: 2 lower
-_ _ _ i N o S -->SUCCESS
-_ _ _ i N O s -->SUCCESS
-_ _ _ i N O S -->SUCSESS
-_ _ _ I n o s -->fail: 2 lower
+_ _ _ i n o s -->fail: 2 lower          _ _ _ 0 0 0 0(s)
+_ _ _ i n o S -->fail: 2 lower          _ _ _ 0 0 0 1(S)
+_ _ _ i n O s -->fail: 2 lower          _ _ _ 0 0 1 0(s)
+_ _ _ i n O S -->fail: 2 lower          _ _ _ 0 0 1 1(S)
+_ _ _ i N o s -->fail: 2 lower          _ _ _ 0 1 0 0(s)
+_ _ _ i N o S -->SUCCESS                _ _ _ 0 1 0 1(S)
+_ _ _ i N O s -->SUCCESS                etc...
+_ _ _ i N O S -->SUCSESS                etc...
+_ _ _ I n o s -->fail: 2 lower        
 _ _ _ I n o S -->fail: 2 lower
 _ _ _ I n O s -->SUCCESS
 _ _ _ I n O S -->SUCCESS
