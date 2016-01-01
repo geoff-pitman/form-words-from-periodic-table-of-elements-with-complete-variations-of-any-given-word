@@ -1,5 +1,5 @@
 Form words with element abbreviations from the periodic table of elements.
-Finds ALL POSSIBLE VARIATIONS for each word!
+Find ALL POSSIBLE VARIATIONS of each word!
 
 - GENERAL OVERVIEW OF ALGORITHM -
   
