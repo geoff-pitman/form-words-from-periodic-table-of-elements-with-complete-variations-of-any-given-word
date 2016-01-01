@@ -5,9 +5,9 @@ Finds ALL POSSIBLE variations.
   
 1.  Match symbols to chars in word.
      a. Build a string with equal number of chars to word and fill it in with non alpha char. 
-     ( word = element -> fill-word = ???????)
+     ( WORD = business -> fill_WORD = ????????)
      b. Place each matching symbol in its own fill-word string
-              i.  Ex: word = cures -> C???? Cu??? ??Re? ????S ?U???
+              i.  Ex: WORD = cures -> C???? Cu??? ??Re? ????S ?U???
 2.  Ensure each char column is filled
      a. If a column yields 0 it is automatic fail
 3.  Check to see if there is capitalized variation in char column
