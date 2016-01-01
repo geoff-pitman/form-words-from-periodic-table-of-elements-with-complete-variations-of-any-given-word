@@ -80,7 +80,7 @@ int main()
             continue;  // fail, go on to next word
         }
              
-        // init char symbol variations map
+        // init upper/lower char variation column (index) map
         for(int idx = 0; idx < word.length(); ++idx)
             variations.push_back(0);
     
