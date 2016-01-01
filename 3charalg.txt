@@ -1,12 +1,13 @@
 *since there really shouldn't be any cases of 3 char symbols
-     I've prevented that part of the code from executing...
-     unless the UuX flag gets flipped on.  It basically has it's
-     own algorithm, because the 1 and 2 char symbol algorithm
-     runs much faster without the overhead of doing a 3 char
-     symbol check, which theoretically will never happen.
-     (because there are no words in the English language that
-      contain 1 of the 4 matching UuX  symbols.
-*need a more specific algorithm for bucket lists
+     I've prevented that part of the code from executing unless 
+     a quick check is passed and the UuX flag gets flipped on.  
+     It basically has it's own algorithm, because the 1 and 2 
+     char symbol algorithm runs much faster without the overhead
+     of doing a 3 char symbol check, which theoretically will 
+     never happen (because there are no words in the English 
+     language that contain 1 of the 4 matching UuX symbols AND
+     can be fully formed. Ex: muumuus -> ?UU?Uus, ?UU?UUS)
+*need a more specific 3-char-symbol routine bucket list
 *need to identify patterns for adjacent letters
 
 find out if:
