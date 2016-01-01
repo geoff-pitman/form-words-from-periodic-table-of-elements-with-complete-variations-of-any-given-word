@@ -264,11 +264,11 @@ Uut: *)Ta,Te,Tl,Tm
 ////////////////////////////////////////////////////////////////////////
 //                      BUILD VARIATIONS TABLE
 ////////////////////////////////////////////////////////////////////////
-        // init map to where chars have 2 variations
+        // init map for keeping track of bit flips (uppers/lowers)
         for (int idx = 0; idx < tablecount; ++idx)
             captrack.push_back(false);
  
-        // build all possible variations of formed word
+        // build all possible variations of formed word (truth table)
         for (int idx = 0; idx < truthtable; ++idx)
         {
             int trackexp = 0;
