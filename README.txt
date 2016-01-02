@@ -53,12 +53,12 @@ Al?????
 ??????S
 - all char columns are filled so we're good so far
 
-Extract data:
-- index (letter positions) =    0 1 2 3 4 5 6 7 
-- map char variation to index = 1 1 1 2 2 2 2 2
-- A, l, B are constants
-- (I,i) (N,n) (O,o) (S,s) are variants
+Map char variations to letter position:
+- index (letter positions) =    0 1 2 3 4 5 6 
+- map char variation to index = 1 1 1 2 2 2 2
 - Possible variations = 1x1x1x2x2x2x2 = 2^4 = 16 possible variations
+- (a, l, b) are constants -> (A, l, B)
+- (i, n, o, s) are variants -> [(I,i) (N,n) (O,o) (S,s)]
 
 Build word variation "truth table: |   (analagous to building a truth table for n-bit input)
 A l B                              |    (x = constant, 0 = lower, 1 = upper):  
