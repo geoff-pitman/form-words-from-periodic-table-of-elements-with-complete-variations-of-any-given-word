@@ -163,7 +163,6 @@ Uut: *)Ta,Te,Tl,Tm
 
         if (ucheck)
         {
-
            ifstream el3("el3.txt");
            
             while (el3 >> temp)
