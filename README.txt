@@ -60,7 +60,7 @@ Extract data:
 - (I,i) (N,n) (O,o) (S,s) are variants
 - Possible variations = 1x1x1x2x2x2x2 = 2^4 = 16 possible variations
 
-Build "truth table" - constants are ignored:
+Build "truth table":
 A l B  
 _ _ _ i n o s -->fail: 2 lower          _ _ _ 0 0 0 0(s)
 _ _ _ i n o S -->fail: 2 lower          _ _ _ 0 0 0 1(S)
