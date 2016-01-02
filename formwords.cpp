@@ -60,7 +60,7 @@ int main()
         ++totalwords;   // for program stats
         
         // check for single char words
-        if (word.length() < 2)
+        if (word.length() == 1)
         {
             for (int idx = 0; idx < els1.size(); ++idx)
             {
@@ -68,8 +68,8 @@ int main()
                 {
                     ++totalvars;
                     ++success;
-                    cout << word << ": " << results.size() << " variation(s) found... \n"
-                         << "[" << results[idx] << "]\n";
+                    cout << word << ": 1 variation(s) found... \n"
+                         << "[" << toupper(word[0]) << "]\n";
 
                     continue;   // success, go on to next word
                 }
@@ -386,7 +386,7 @@ Uut: *)Ta,Te,Tl,Tm
     cout << "Total words checked: " << totalwords << endl
          << "Total words formed: " << success << endl
          << "Total variations: " << totalvars << endl;
-    //printf("Runtime: %.3f ms\n", stopwatch);
+    printf("Runtime: %.3f ms\n", stopwatch);
     
     return 0;
 }
