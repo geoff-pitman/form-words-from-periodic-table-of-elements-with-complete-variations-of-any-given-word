@@ -60,24 +60,24 @@ Extract data:
 - (I,i) (N,n) (O,o) (S,s) are variants
 - Possible variations = 1x1x1x2x2x2x2 = 2^4 = 16 possible variations
 
-Build "truth table":
-A l B  
-_ _ _ i n o s -->fail: 2 lower          _ _ _ 0 0 0 0(s)
-_ _ _ i n o S -->fail: 2 lower          _ _ _ 0 0 0 1(S)
-_ _ _ i n O s -->fail: 2 lower          _ _ _ 0 0 1 0(s)
-_ _ _ i n O S -->fail: 2 lower          _ _ _ 0 0 1 1(S)
-_ _ _ i N o s -->fail: 2 lower          _ _ _ 0 1 0 0(s)
-_ _ _ i N o S -->SUCCESS                _ _ _ 0 1 0 1(S)
-_ _ _ i N O s -->SUCCESS                etc...
-_ _ _ i N O S -->SUCSESS                etc...
-_ _ _ I n o s -->fail: 2 lower        
-_ _ _ I n o S -->fail: 2 lower
-_ _ _ I n O s -->SUCCESS
-_ _ _ I n O S -->SUCCESS
-_ _ _ I N o s -->fail: 2 lower
-_ _ _ I N o S -->SUCCESS
-_ _ _ I N O s -->SUCCESS
-_ _ _ I N O S -->SUCCESS
+Build word variation "truth table: |   (analagous to building a truth table for n-bit input)
+A l B                              |    (x = constant, 0 = lower, 1 = upper):  
+      i n o s -->fail: 2 lower     |     x x x 0 0 0 0(s)
+      i n o S -->fail: 2 lower     |     x x x 0 0 0 1(S)
+      i n O s -->fail: 2 lower     |     x x x 0 0 1 0(s)
+      i n O S -->fail: 2 lower     |     x x x 0 0 1 1(S)
+      i N o s -->fail: 2 lower     |     x x x 0 1 0 0(s)
+      i N o S -->SUCCESS           |     x x x 0 1 0 1(S)
+      i N O s -->SUCCESS           |     etc...
+      i N O S -->SUCSESS           |     etc...
+      I n o s -->fail: 2 lower        
+      I n o S -->fail: 2 lower
+      I n O s -->SUCCESS
+      I n O S -->SUCCESS
+      I N o s -->fail: 2 lower
+      I N o S -->SUCCESS
+      I N O s -->SUCCESS
+      I N O S -->SUCCESS
 
 8 variations found:
 [AlBINOS]
