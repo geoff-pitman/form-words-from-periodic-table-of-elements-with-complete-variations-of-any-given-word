@@ -409,7 +409,6 @@ Uut: *)Ta,Te,Tl,Tm
         }
         if (!checkstat)
             stat.push_back(results.size());
-
     }
   
     // output program stats
