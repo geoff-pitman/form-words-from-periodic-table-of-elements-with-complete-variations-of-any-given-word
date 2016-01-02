@@ -33,9 +33,10 @@ int main()
     float stopwatch;
     gettimeofday(&start, NULL); 
     
-    int totalvars = 0, totalwords = 0, success = 0;
-    string word, temp, uuxtrack;
-    vector<string> els1, els2, els3;
+    int totalvars = 0, totalwords = 0, success = 0, maxvar = 0, biggestablesize = 0, varscheck = 0, aftervar = 0;
+    string word, temp, uuxtrack, maxword, tableword;
+    vector<string> els1, els2, els3, maxvars, bigtable;
+    vector<int> stat, biggestable;
     ifstream dict("dictionaryEng.txt");
     ifstream el1("el1.txt");
     ifstream el2("el2.txt");
@@ -51,7 +52,7 @@ int main()
     while (dict >> word)
     {
         int truthtable = 1, tablecount = 0;
-        bool fail = false, ucheck = false, upass = false, twofail = false;
+        bool fail = false, ucheck = false, upass = false, twofail = false, checkstat = false;
         string conts, fill;
         vector<bool> captrack;
         vector<int> variations;
@@ -80,7 +81,7 @@ int main()
             continue;  // fail, go on to next word
         }
              
-        // init upper/lower char variation column (index) map
+        // init char symbol variations map
         for(int idx = 0; idx < word.length(); ++idx)
             variations.push_back(0);
     
@@ -213,8 +214,7 @@ Uut: *)Ta,Te,Tl,Tm
                 }
             }
             
-            // if UuX check passes AND formed word has more than one possible
-            //     variation, fall through to normal routine
+            // if UuX check fails, continue to normal routine
             if (upass)
             {
                 results.push_back(uuxtrack);
@@ -378,6 +378,38 @@ Uut: *)Ta,Te,Tl,Tm
         } 
         //else
             //cout << word << ": ***FAIL***" << endl << endl;
+        
+        for (int idx = 0; idx < biggestable.size(); ++idx)
+        {
+            if (wordtable.size() == biggestable[idx])
+               checkstat = true;
+           
+            if (wordtable.size() > biggestablesize)
+            {
+                biggestablesize = wordtable.size();
+                tableword = word;
+                aftervar = results.size();
+            }    
+        }  
+        if (!checkstat)
+            biggestable.push_back(wordtable.size());
+        
+        checkstat = false;
+        for (int idx = 0; idx < stat.size(); ++idx)
+        {
+            if (results.size() == stat[idx])
+               checkstat = true;
+           
+            if (results.size() > maxvar)
+            {
+                maxvar = results.size();
+                maxword = word;
+                varscheck = wordtable.size();
+            }
+        }
+        if (!checkstat)
+            stat.push_back(results.size());
+
     }
   
     // output program stats
@@ -387,6 +419,11 @@ Uut: *)Ta,Te,Tl,Tm
          << "Total words formed: " << success << endl
          << "Total variations: " << totalvars << endl;
     printf("Runtime: %.3f ms\n", stopwatch);
-    
+    cout << endl << "Most variations after elimnination: " << maxword << " = " << maxvar << endl;
+    cout << "Variations before elimination: " << varscheck << endl << endl;
+    cout << "Most variations before elimination: " << tableword << " = " << biggestablesize << endl;
+    cout << "Variations after elimination: " << aftervar << endl;
+   
+    cout << endl;
     return 0;
 }
