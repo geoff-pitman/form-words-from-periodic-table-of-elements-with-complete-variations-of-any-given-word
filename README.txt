@@ -51,16 +51,16 @@ Al?????
 ????O?? 
 ????Os? 
 ??????S
-- All char columns are filled so we're good so far
+- all char columns are filled so we're good so far
 
-
+Extract data:
 - index (letter positions) =    0 1 2 3 4 5 6 7 
 - map char variation to index = 1 1 1 2 2 2 2 2
 - A, l, B are constants
 - (I,i) (N,n) (O,o) (S,s) are variants
 - Possible variations = 1x1x1x2x2x2x2 = 2^4 = 16 possible variations
 
-Build 4 bit truth table - constants are ignored...
+Build "truth table" - constants are ignored:
 A l B  
 _ _ _ i n o s -->fail: 2 lower          _ _ _ 0 0 0 0(s)
 _ _ _ i n o S -->fail: 2 lower          _ _ _ 0 0 0 1(S)
