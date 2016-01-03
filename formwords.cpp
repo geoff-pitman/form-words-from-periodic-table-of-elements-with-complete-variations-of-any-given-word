@@ -180,13 +180,14 @@ Uut: *)Ta,Te,Tl,Tm
                 
             for (int idx = 0; idx < els3.size(); ++idx)
             {   
-                for (int idx2 = 0; idx2 < word.length()-1; ++idx2)
+                for (int idx2 = 0; idx2 < word.length()-2; ++idx2)
                 {
                     if ((els3[idx][0] == toupper(word[idx2])) && (els3[idx][1] == tolower(word[idx2+1])) && (els3[idx][2] == tolower(word[idx2+2])) )
                     {
                         uuxtrack[idx2] = els3[idx][0];
                         uuxtrack[idx2+1] = els3[idx][1];
                         uuxtrack[idx2+2] = els3[idx][2];
+                        idx2 += 2;
                     }
                 }
             } 
