@@ -6,6 +6,12 @@ to see!!
 Total words checked from dictionaryEng.txt: 109582
 Total words formed: 15048
 Total variations of formed words: 26560
+
+Most variations after elimnination: nonpossession = 40
+Variations before elimination: 128
+
+Most variations before elimination: chemotherapeuticness = 256
+Variations after elimination: 0
 ====================================================
 ac: 1 variation(s) found... 
 [Ac]
