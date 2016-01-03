@@ -188,28 +188,21 @@ Uut: *)Ta,Te,Tl,Tm
                 }
             } 
             
+            upass = true;
             for (int idx = 0; idx < word.length(); ++idx)
             {
-                upass = true;
-                
                 if (uuxtrack[idx] == '?')
                 {
                     upass = false;  
-                    break;    // fail, go on to next word
+                    
+                    break;    // fail, go on to 1 and 2 char symbol check
                 }
                 else if (idx < word.length() - 3 && uuxtrack[idx] == 'U' && uuxtrack[idx+1] == 'u'
                                             && islower(uuxtrack[idx+2]) && islower(uuxtrack[idx+3]))
                 {
-                   for (int idx2 = 0; idx2 < els1.size(); idx2++)
-                   {
-                       upass = false;
-                       
-                       if (toupper(uuxtrack[idx+3]) == els1[idx2][0])
-                       {
-                           upass = true;
-                           uuxtrack[idx+3] = toupper(uuxtrack[idx+3]);
-                       }
-                   }
+                    upass = false;
+                    
+                    break;   // fail, go on to 1 and 2 char symbol check
                 }
             }
             
@@ -233,13 +226,14 @@ Uut: *)Ta,Te,Tl,Tm
                     continue;  // success, go on to next word
                }
             }
-            else
+            else if (twofail)
             {
                 //cout << word << ": ***FAIL***" << endl << endl;
             
                 continue;   // fail, go on to next word
             }
         }      
+///////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////
       
 ///////////////////////////////////////////////////////////////////////
@@ -269,10 +263,11 @@ Uut: *)Ta,Te,Tl,Tm
             continue;  // fail, go on to next word
         }
 //////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
 
-////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
 //                      BUILD VARIATIONS TABLE
-////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
         // init map for keeping track of bit flips (uppers/lowers)
         for (int idx = 0; idx < tablecount; ++idx)
             captrack.push_back(false);
@@ -314,10 +309,11 @@ Uut: *)Ta,Te,Tl,Tm
             }
         } 
 /////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
 
-////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
 //     ELIMINATE ERRONEOUS VARIATIONS / STORE RESULTS  
-//////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
         for (int idx = 0; idx < truthtable; ++idx)
         {
             int lower = 0;
@@ -363,7 +359,11 @@ Uut: *)Ta,Te,Tl,Tm
                 results.push_back(wordtable[idx]);
         }
 ////////////////////////////////////////////////////////////////////////////////
-        // output results
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+//                       OUTPUT RESULTS
+////////////////////////////////////////////////////////////////////////////////
         if (results.size() > 0)
         {
             totalvars += results.size();
@@ -377,7 +377,12 @@ Uut: *)Ta,Te,Tl,Tm
         } 
         //else
             //cout << word << ": ***FAIL***" << endl << endl;
-        
+//////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////
+//                       GET PROGRAM STATS                  
+//////////////////////////////////////////////////////////////////////////////////
         for (int idx = 0; idx < biggestable.size(); ++idx)
         {
             if (wordtable.size() == biggestable[idx])
@@ -421,7 +426,9 @@ Uut: *)Ta,Te,Tl,Tm
     cout << "Variations before elimination: " << varscheck << endl << endl;
     cout << "Most variations before elimination: " << tableword << " = " << biggestablesize << endl;
     cout << "Variations after elimination: " << aftervar << endl;
-   
+ ////////////////////////////////////////////////////////////////////////////////////////////////////
+ ////////////////////////////////////////////////////////////////////////////////////////////////////
+ 
     cout << endl;
     return 0;
 }
