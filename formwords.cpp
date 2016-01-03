@@ -32,7 +32,7 @@ int main()
     string word, temp, uuxtrack, maxword, tableword;
     vector<string> els1, els2, els3, maxvars, bigtable;
     vector<int> stat, biggestable;
-    ifstream dict("dictionaryEng.txt");
+    ifstream dict("ucheck.txt");
     ifstream el1("el1.txt");
     ifstream el2("el2.txt");
     
@@ -187,7 +187,7 @@ Uut: *)Ta,Te,Tl,Tm
                         uuxtrack[idx2] = els3[idx][0];
                         uuxtrack[idx2+1] = els3[idx][1];
                         uuxtrack[idx2+2] = els3[idx][2];
-                        idx2 += 2;
+                        idx2 += 3;
                     }
                 }
             } 
@@ -205,8 +205,16 @@ Uut: *)Ta,Te,Tl,Tm
                                             && islower(uuxtrack[idx+2]) && islower(uuxtrack[idx+3]))
                 {
                     upass = false;
-                    
-                    break;   // fail, go on to 1 and 2 char symbol check
+                    for (int idx2 = 0; idx2 < els1.size(); ++idx2)
+                    {
+                        if (tolower(uuxtrack[idx+3]) == tolower(els1[idx2][0]))
+                        {
+                            uuxtrack[idx+3] = toupper(els1[idx2][0]);
+                            upass = true;
+                        }
+                    }
+                    if (!upass)
+                        break;   // fail, go on to 1 and 2 char symbol check
                 }
             }
             
