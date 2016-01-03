@@ -52,7 +52,7 @@ int main()
 
 
 // BEGIN MAIN PROCESSING ROUTINE 
-    while (dict >> word)   // load words from dictionary
+    while (dict >> word)   // get next word from dictionary
     {
         int truthtable = 1, tablecount = 0;
         bool fail = false, ucheck = false, upass = false, twofail = false, checkstat = false;
