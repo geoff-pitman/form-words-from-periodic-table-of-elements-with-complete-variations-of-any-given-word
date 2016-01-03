@@ -345,6 +345,7 @@ Uut: *)Ta,Te,Tl,Tm
                         if (els1[idx3][0] == wordtable[idx][idx2])
                         {
                             elscheck = true;
+                            
                             break;   // we're okay, continue processing variations
                         }
                     }
