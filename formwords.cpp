@@ -11,7 +11,7 @@ Find ALL POSSIBLE VARIATIONS of each word!
 #include <string>
 #include <cmath>
 #include <cctype>
-#include <sys/time.h>
+#include <sys/time.h> // *****time header for nix machine*******
 
 using namespace std;
 
@@ -383,6 +383,8 @@ Uut: *)Ta,Te,Tl,Tm
 //////////////////////////////////////////////////////////////////////////////////
 //                       GET AND PRINT PROGRAM STATS                  
 //////////////////////////////////////////////////////////////////////////////////
+        // get program stats
+        checkstat = false;
         for (int idx = 0; idx < biggestable.size(); ++idx)
         {
             if (wordtable.size() == biggestable[idx])
@@ -413,7 +415,9 @@ Uut: *)Ta,Te,Tl,Tm
         }
         if (!checkstat)
             stat.push_back(results.size());
-    }
+    
+ ////////////////////////////////////////////////////////////////////////////////////////////////////   
+    } //  end main processing while loop
   
     // output program stats
     gettimeofday(&end, NULL);
