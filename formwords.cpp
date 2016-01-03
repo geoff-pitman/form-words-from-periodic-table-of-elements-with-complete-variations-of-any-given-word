@@ -32,7 +32,7 @@ int main()
     string word, temp, uuxtrack, maxword, tableword;
     vector<string> els1, els2, els3, maxvars, bigtable;
     vector<int> stat, biggestable;
-    ifstream dict("ucheck.txt");
+    ifstream dict("dictionaryEng.txt");
     ifstream el1("el1.txt");
     ifstream el2("el2.txt");
     
