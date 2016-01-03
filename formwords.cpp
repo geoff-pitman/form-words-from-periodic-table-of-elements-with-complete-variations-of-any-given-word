@@ -28,11 +28,6 @@ float gettime_ms(struct timeval start, struct timeval end)
 
 int main()
 {
-    // used to get time stats
-    struct timeval start, end;
-    float stopwatch;
-    gettimeofday(&start, NULL); 
-    
     int totalvars = 0, totalwords = 0, success = 0, maxvar = 0, biggestablesize = 0, varscheck = 0, aftervar = 0;
     string word, temp, uuxtrack, maxword, tableword;
     vector<string> els1, els2, els3, maxvars, bigtable;
@@ -47,7 +42,14 @@ int main()
     // load 2 char symbols
     while (el2 >> temp)
         els2.push_back(temp); 
-    
+
+//////////////////////////////////////////    
+    // used to get time stats
+    struct timeval start, end;
+    float stopwatch;
+    gettimeofday(&start, NULL); 
+////////////////////////////////////////  
+
     // load words from dictionary 
     while (dict >> word)
     {
