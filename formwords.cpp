@@ -28,7 +28,8 @@ float gettime_ms(struct timeval start, struct timeval end)
 
 int main()
 {
-    int totalvars = 0, totalwords = 0, success = 0, maxvar = 0, biggestablesize = 0, varscheck = 0, aftervar = 0;
+    int totalvars = 0, totalwords = 0, success = 0, maxvar = 0;
+        biggestablesize = 0, varscheck = 0, aftervar = 0;
     string word, temp, uuxtrack, maxword, tableword;
     vector<string> els1, els2, els3, maxvars, bigtable;
     vector<int> stat, biggestable;
@@ -55,7 +56,8 @@ int main()
     while (dict >> word)   // get next word from dictionary
     {
         int truthtable = 1, tablecount = 0;
-        bool fail = false, ucheck = false, upass = false, twofail = false, checkstat = false;
+        bool fail = false, ucheck = false, upass = false, 
+             twofail = false, checkstat = false;
         string conts, fill;
         vector<bool> captrack;
         vector<int> variations;
@@ -182,7 +184,8 @@ Uut: *)Ta,Te,Tl,Tm
             {   
                 for (int idx2 = 0; idx2 < word.length()-2; ++idx2)
                 {
-                    if ((els3[idx][0] == toupper(word[idx2])) && (els3[idx][1] == tolower(word[idx2+1])) && (els3[idx][2] == tolower(word[idx2+2])) )
+                    if ((els3[idx][0] == toupper(word[idx2])) && (els3[idx][1] == tolower(word[idx2+1]))
+                                                              && (els3[idx][2] == tolower(word[idx2+2])))
                     {
                         uuxtrack[idx2] = els3[idx][0];
                         uuxtrack[idx2+1] = els3[idx][1];
