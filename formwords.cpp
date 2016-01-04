@@ -54,14 +54,14 @@ int main()
 
 // BEGIN MAIN PROCESSING ROUTINE 
     while (dict >> word)   // get next word from dictionary
-    {
+    {	
         int truthtable = 1, tablecount = 0;
         bool fail = false, ucheck = false, upass = false, 
              twofail = false, checkstat = false;
         string conts, fill;
         vector<bool> captrack;
         vector<int> variations;
-        vector<string> wordtable, results;
+        vector<string> wordtable, results, utable;
         
         ++totalwords;   // for program stats
         
@@ -224,10 +224,11 @@ Uut: *)Ta,Te,Tl,Tm
             // if UuX check fails, continue to normal routine
             if (upass)
             {
-                results.push_back(uuxtrack);
+                // results.push_back(uuxtrack);
                 
                // if word can only be formed with 3-char-symbol then spit out results
-               if (twofail)
+               /*
+			   if (twofail)
                {                  
                     totalvars += results.size();
                     ++success;                    
@@ -240,6 +241,7 @@ Uut: *)Ta,Te,Tl,Tm
                 
                     continue;  // success, go on to next word
                }
+			   */
             }
             else if (twofail)
             {
@@ -322,9 +324,86 @@ Uut: *)Ta,Te,Tl,Tm
                     ++trackexp;
                 }      
             }
+			
+			if(upass)
+			{
+				utable.push_back(wordtable[idx]);
+				
+				for(int idx2 = 0; idx2 < word.length()-2; ++idx2)
+				{
+					if(tolower(utable[utable.size()-1][idx2]) == 'u' && tolower(utable[utable.size()-1][idx2+1]) == 'u' )
+					{
+						for(int idx3 = 0; idx3 < els3.size(); ++idx3)
+						{
+							if (tolower(utable[utable.size()-1][idx2+2]) == els3[idx3][2])
+							{
+								utable[utable.size()-1][idx2] = 'U';
+								utable[utable.size()-1][idx2+1] = 'u';
+								utable[utable.size()-1][idx2+2] = els3[idx3][2];
+							}
+						}
+					}
+				}
+			}
         } 
 /////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////
+
+/////////$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$////
+////////////////////////////$$$$$$$$$$$$$$$$$$$$4
+if(upass)
+{
+        for (int idx = 0; idx < utable.size(); ++idx)
+        {
+            int lower = 0;
+            bool lowercheck = true;
+            bool elscheck = true;
+            
+            for (int idx2 = 0; idx2 < word.length(); ++idx2)
+            {
+                if (islower(utable[idx][idx2]))
+                {
+                    ++lower;
+                    
+                    if (utable[idx][idx2] == 'u' && utable[idx][idx2-1] == 'U')
+						lower = 0;
+				    else if (lower == 2)
+				    {
+					    lowercheck = false;
+                        
+						break; //  variation failed, continue processing variations
+				    }
+                }
+                else if (isupper(utable[idx][idx2]))
+                    lower = 0;
+                
+                if (isupper(utable[idx][idx2]) && idx2 < word.length()-1 && isupper(utable[idx][idx2+1]))
+                {   
+                    elscheck = false;
+                   
+                    for (int idx3 = 0; idx3 < els1.size(); ++idx3)
+                    {
+                        if (els1[idx3][0] == utable[idx][idx2])
+                        {
+                            elscheck = true;
+                            
+                            break;   // we're okay, continue processing variations
+                        }
+                    }
+                    
+                    if (elscheck == false)
+                        break;     // variation failed, continue processing variations
+                }
+            } 
+           
+           //store successful variations
+            if (elscheck && lowercheck) 
+                results.push_back(utable[idx]);
+        }
+
+}
+////////////////////////////////////////////////////////////////////
+
 
 /////////////////////////////////////////////////////////////////////////
 //     ELIMINATE ERRONEOUS VARIATIONS / STORE RESULTS  
@@ -345,7 +424,7 @@ Uut: *)Ta,Te,Tl,Tm
                     {
                         lowercheck = false;
                         
-                        break; //  variation failed, continue processing variations
+					    break; //  variation failed, continue processing variations
                     }
                 }
                 else if (isupper(wordtable[idx][idx2]))
@@ -368,12 +447,63 @@ Uut: *)Ta,Te,Tl,Tm
                     if (elscheck == false)
                         break;     // variation failed, continue processing variations
                 }
-            }
+            } 
            
            // store successful variations
             if (elscheck && lowercheck) 
                 results.push_back(wordtable[idx]);
         }
+				
+	if(upass)
+	{
+        for (int idx = 0; idx < utable.size(); ++idx)
+        {
+            int lower = 0;
+            bool lowercheck = true;
+            bool elscheck = true;
+            
+            for (int idx2 = 0; idx2 < word.length(); ++idx2)
+            {
+                if (islower(utable[idx][idx2]))
+                {
+                    ++lower;
+                    
+                    if (utable[idx][idx2] == 'u' && utable[idx][idx2-1] == 'U')
+						lower = 0;
+				    else if (lower == 2)
+				    {
+					    lowercheck = false;
+                        
+						break; //  variation failed, continue processing variations
+				    }
+                }
+                else if (isupper(utable[idx][idx2]))
+                    lower = 0;
+                
+                if (isupper(utable[idx][idx2]) && idx2 < word.length()-1 && isupper(utable[idx][idx2+1]))
+                {   
+                    elscheck = false;
+                   
+                    for (int idx3 = 0; idx3 < els1.size(); ++idx3)
+                    {
+                        if (els1[idx3][0] == utable[idx][idx2])
+                        {
+                            elscheck = true;
+                            
+                            break;   // we're okay, continue processing variations
+                        }
+                    }
+                    
+                    if (elscheck == false)
+                        break;     // variation failed, continue processing variations
+                }
+            } 
+           
+           //store successful variations
+            if (elscheck && lowercheck) 
+                results.push_back(utable[idx]);
+        }
+    }
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
