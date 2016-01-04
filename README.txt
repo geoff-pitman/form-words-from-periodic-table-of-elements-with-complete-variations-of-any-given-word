@@ -28,15 +28,9 @@ I would really like to see!!
     b. Otherwise...store results!!
 (**Note**) A much more complicated algorithm is employed when a word
           contains a matching 3-char-symbol.  This happens extremely
-          rarely, as there are no English words that contain one And
-          can also be formed.  However, for completeness' sake, I am 
-          in the process of writing it.  As of now, words with matching
-          3-char-symbols are identified and matched, but only one variation
-          with the 3-char-symbol is identified. If 1 and 2 char symbol
-          variations can be formed (for example: uus can be matched
-          with U and S so it will always pass a 1 and 2 char symbol
-          check), then the normal routine will execute.
-
+          rarely, as there are no English words that contain one AND
+          can also be formed.  However, for completeness' sake, I
+          decided to write it in anyway.
 ================================================================================          
 - RANDOM EXAMPLE -
 
