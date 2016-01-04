@@ -325,26 +325,26 @@ Uut: *)Ta,Te,Tl,Tm
                 }      
             }
 			
-			if(upass)
-			{
-			    utable.push_back(wordtable[idx]);
-				
-				for(int idx2 = 0; idx2 < word.length()-2; ++idx2)
-				{
-				    if(tolower(utable[utable.size()-1][idx2]) == 'u' && tolower(utable[utable.size()-1][idx2+1]) == 'u' )
-				    {
-				        for(int idx3 = 0; idx3 < els3.size(); ++idx3)
-				        {
-				            if (tolower(utable[utable.size()-1][idx2+2]) == els3[idx3][2])
-				            {
-				                utable[utable.size()-1][idx2] = 'U';
-				                utable[utable.size()-1][idx2+1] = 'u';
-				                utable[utable.size()-1][idx2+2] = els3[idx3][2];
-				            }
-				        }
-				    }
-				}
-			}
+            if(upass)
+            {
+                utable.push_back(wordtable[idx]);
+                
+                for(int idx2 = 0; idx2 < word.length()-2; ++idx2)
+                {
+                    if(tolower(utable[utable.size()-1][idx2]) == 'u' && tolower(utable[utable.size()-1][idx2+1]) == 'u' )
+                    {
+                        for(int idx3 = 0; idx3 < els3.size(); ++idx3)
+                        {
+                            if (tolower(utable[utable.size()-1][idx2+2]) == els3[idx3][2])
+                            {
+                                utable[utable.size()-1][idx2] = 'U';
+                                utable[utable.size()-1][idx2+1] = 'u';
+                                utable[utable.size()-1][idx2+2] = els3[idx3][2];
+                            }
+                        }
+                    }
+                }
+            }
         } 
 /////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////
