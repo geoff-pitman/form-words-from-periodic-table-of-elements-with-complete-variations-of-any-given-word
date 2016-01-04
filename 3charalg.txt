@@ -28,4 +28,7 @@ examine adjacet letters that could possibly be affected
 search through element lists again
 add to results
 
+========
+copy word table possibilties and in the new list replace 'uux/UUx/UUX' with 'Uux'?
+
 
