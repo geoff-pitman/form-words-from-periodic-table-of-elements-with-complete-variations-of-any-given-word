@@ -33,7 +33,7 @@ int main()
     string word, temp, uuxtrack, maxword, tableword;
     vector<string> els1, els2, els3, maxvars, bigtable;
     vector<int> stat, biggestable;
-    ifstream dict("dictionaryEng.txt");
+    ifstream dict("ucheck.txt");
     ifstream el1("el1.txt");
     ifstream el2("el2.txt");
     
@@ -349,62 +349,6 @@ Uut: *)Ta,Te,Tl,Tm
 /////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////
 
-/////////$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$////
-////////////////////////////$$$$$$$$$$$$$$$$$$$$4
-if(upass)
-{
-        for (int idx = 0; idx < utable.size(); ++idx)
-        {
-            int lower = 0;
-            bool lowercheck = true;
-            bool elscheck = true;
-            
-            for (int idx2 = 0; idx2 < word.length(); ++idx2)
-            {
-                if (islower(utable[idx][idx2]))
-                {
-                    ++lower;
-                    
-                    if (utable[idx][idx2] == 'u' && utable[idx][idx2-1] == 'U')
-						lower = 0;
-				    else if (lower == 2)
-				    {
-					    lowercheck = false;
-                        
-						break; //  variation failed, continue processing variations
-				    }
-                }
-                else if (isupper(utable[idx][idx2]))
-                    lower = 0;
-                
-                if (isupper(utable[idx][idx2]) && idx2 < word.length()-1 && isupper(utable[idx][idx2+1]))
-                {   
-                    elscheck = false;
-                   
-                    for (int idx3 = 0; idx3 < els1.size(); ++idx3)
-                    {
-                        if (els1[idx3][0] == utable[idx][idx2])
-                        {
-                            elscheck = true;
-                            
-                            break;   // we're okay, continue processing variations
-                        }
-                    }
-                    
-                    if (elscheck == false)
-                        break;     // variation failed, continue processing variations
-                }
-            } 
-           
-           //store successful variations
-            if (elscheck && lowercheck) 
-                results.push_back(utable[idx]);
-        }
-
-}
-////////////////////////////////////////////////////////////////////
-
-
 /////////////////////////////////////////////////////////////////////////
 //     ELIMINATE ERRONEOUS VARIATIONS / STORE RESULTS  
 /////////////////////////////////////////////////////////////////////////
@@ -575,7 +519,7 @@ if(upass)
     cout << endl << "Most variations after elimnination: " << maxword << " = " << maxvar << endl;
     cout << "Variations before elimination: " << varscheck << endl << endl;
     cout << "Most variations before elimination: " << tableword << " = " << biggestablesize << endl;
-    cout << "Variations after elimination: " << aftervar << endl;
+    cout << "Variations after elimination: " << aftervar << endl; 
  ////////////////////////////////////////////////////////////////////////////////////////////////////
  ////////////////////////////////////////////////////////////////////////////////////////////////////
  
