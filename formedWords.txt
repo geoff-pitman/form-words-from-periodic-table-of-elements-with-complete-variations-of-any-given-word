@@ -1,7 +1,6 @@
 As far as I can tell, this is the most exhaustive list 
 of formed words.  If you can find a list that comes up
-with more variations of words, I would really like
-to know!!
+with more variations of words, please let me know!!
 
 Total words checked from dictionaryEng.txt: 109582
 Total words formed: 15048
