@@ -29,6 +29,6 @@ search through element lists again
 add to results
 
 ========
-copy word table possibilties and in the new list replace 'uux/UUx/UUX' with 'Uux'?
+copy word table possibilties and in the new list replace 'uux/UUX' with 'Uux'?
 
 
