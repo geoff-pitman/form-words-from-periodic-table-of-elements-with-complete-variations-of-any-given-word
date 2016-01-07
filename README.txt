@@ -1,4 +1,4 @@
-Form words with element abbreviations from the periodic table of elements.
+Form words with element abbreviations from the periodic table of elements. 
 Find ALL POSSIBLE VARIATIONS of each word!
 
 As far as I can tell, this algorithm will create the absolute most exhaustive list
