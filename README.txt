@@ -5,10 +5,13 @@ Find ALL POSSIBLE VARIATIONS of each word!
 If anyone can find or knows of an alternative algorithm for finding every variation of a 
 given word, I'm very interested to see how it is implemented...especially if it is faster!!
 
--Big O-
+-Big O-  (where 0 < n <= word_length)
 O(logn) --> if char_variants = 0 OR char_variants = 1
 O(2^logn) --> if char_variants < word_length
 O(2^n) --> if char_variants = word_length
+
+On my Dell laptop (4th gen i3 dual core) this algorithm processed
+over 100,000 words in under 3 seconds.  Try it out for yourself!!
 
 ===============================================================================================
 
