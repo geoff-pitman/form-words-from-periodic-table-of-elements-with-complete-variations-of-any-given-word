@@ -1,8 +1,3 @@
-This algorithm will create the absolute most exhaustive list of formed word variations.  
-If anyone can find, or knows of an alternative algorithm (in less than O(n^2) time obviously)
-for finding every variation of a given word, I'm very interested to see how it is implemented!!
-====================================================
-
 Total words checked from dictionaryEng.txt: 109582
 Total words formed: 15048
 Total variations of formed words: 26560
