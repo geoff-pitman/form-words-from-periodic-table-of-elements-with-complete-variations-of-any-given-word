@@ -1,19 +1,16 @@
 Form words with element abbreviations from the periodic table of elements. 
 Find ALL POSSIBLE VARIATIONS of each word!
 
-This algorithm will create the absolute most exhaustive list of formed word variations.  
-If anyone can find, or knows of an alternative algorithm (in less than O(n^2) time obviously)
-for finding every variation of a given word, I'm very interested to see how it is implemented!!
+     This algorithm will create the absolute most exhaustive list of formed word variations.  
+If anyone can find or knows of an alternative algorithm for finding every variation of a 
+given word, I'm very interested to see how it is implemented...especially if it is faster!!
 
-Big-O --> where n corresponds to the number of letters in a word.
-Best: = O(n) --> word cannot be formed OR word can be formed but only 1 variation exists
-Worst: = O(nlogn)
+-Big O-
+O(logn) --> if char_variants = 0 OR char_variants = 1
+O(2^logn) --> if char_variants < word_length
+O(2^n) --> if char_variants = word_length
 
-If this doesn't seem fast, consider the fact that n is never going to be greater than 2 digits.
-The constant number of Elements is almost guarunteed to be much greater than variable (n) length
-words.
-
-================================================================================================
+===============================================================================================
 
 - GENERAL OVERVIEW OF ALGORITHM -
 
