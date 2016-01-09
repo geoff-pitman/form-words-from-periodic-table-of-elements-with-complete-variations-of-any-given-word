@@ -1,6 +1,7 @@
-As far as I can tell, this is the most exhaustive list 
-of formed words.  If you can find a list that comes up
-with more variations of words, please let me know!!
+This algorithm will create the absolute most exhaustive list of formed word variations.  
+If anyone can find, or knows of an alternative algorithm (in less than O(n^2) time obviously)
+for finding every variation of a given word, I'm very interested to see how it is implemented!!
+====================================================
 
 Total words checked from dictionaryEng.txt: 109582
 Total words formed: 15048
@@ -11,7 +12,7 @@ Variations before elimination: 128
 
 Most variations before elimination: chemotherapeuticness = 256
 Variations after elimination: 0
-====================================================
+
 ac: 1 variation(s) found... 
 [Ac]
 
