@@ -11,7 +11,7 @@ O(2^logn) --> if char_variants < word_length
 O(2^n) --> if char_variants = word_length
 
 On my Dell laptop (4th gen i3 dual core) this algorithm processed
-over 100,000 words in under 3 seconds.  Try it out for yourself!!
+over 100,000 words in under 3 seconds.  Test it for yourself!
 
 ===============================================================================================
 
