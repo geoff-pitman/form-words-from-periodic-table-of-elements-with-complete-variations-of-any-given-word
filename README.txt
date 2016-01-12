@@ -64,16 +64,16 @@ Map char variations to letter position:
 - (a, l, b) are constants -> (A, l, B)
 - (i, n, o, s) are variants -> [(I,i) (N,n) (O,o) (S,s)]
 
-Build word variation "truth table: |   (analagous to building a truth table for n-bit input)
-A l B                              |    (x = constant, 0 = lower, 1 = upper):  
-      i n o s -->fail: 2 lower     |     x x x 0 0 0 0(s)
-      i n o S -->fail: 2 lower     |     x x x 0 0 0 1(S)
-      i n O s -->fail: 2 lower     |     x x x 0 0 1 0(s)
-      i n O S -->fail: 2 lower     |     x x x 0 0 1 1(S)
-      i N o s -->fail: 2 lower     |     x x x 0 1 0 0(s)
-      i N o S -->SUCCESS           |     x x x 0 1 0 1(S)
-      i N O s -->SUCCESS           |     etc...
-      i N O S -->SUCSESS           |     etc...
+Build word variation "truth table": |   (analagous to building a truth table for n-bit input)
+A l B                               |    (x = constant, 0 = lower, 1 = upper):  
+      i n o s -->fail: 2 lower      |     x x x 0 0 0 0(s)
+      i n o S -->fail: 2 lower      |     x x x 0 0 0 1(S)
+      i n O s -->fail: 2 lower      |     x x x 0 0 1 0(s)
+      i n O S -->fail: 2 lower      |     x x x 0 0 1 1(S)
+      i N o s -->fail: 2 lower      |     x x x 0 1 0 0(s)
+      i N o S -->SUCCESS            |     x x x 0 1 0 1(S)
+      i N O s -->SUCCESS            |     etc...
+      i N O S -->SUCSESS            |     etc...
       I n o s -->fail: 2 lower        
       I n o S -->fail: 2 lower
       I n O s -->SUCCESS
