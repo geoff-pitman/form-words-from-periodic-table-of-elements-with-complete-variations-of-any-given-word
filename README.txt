@@ -1,9 +1,10 @@
 Form words with element abbreviations from the periodic table of elements. 
 Find ALL POSSIBLE VARIATIONS of each word!
 
-     This algorithm will create the absolute most exhaustive list of formed word variations.  
-If anyone can find or knows of an alternative algorithm for finding every variation of a 
-given word, I'm very interested to see how it is implemented...especially if it is faster!!
+This algorithm will create the absolute most exhaustive list of formed word variations
+in linear time. If anyone can find or knows of an alternative algorithm for finding 
+every variation of a given word, I'm very interested to see how it is implemented...
+especially if it is faster!!
 
 On my Dell laptop (4th gen i3 dual core) this algorithm processed
 over 100,000 words in under 3 seconds.  Test it for yourself!
