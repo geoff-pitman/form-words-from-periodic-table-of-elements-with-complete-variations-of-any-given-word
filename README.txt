@@ -5,15 +5,6 @@ Find ALL POSSIBLE VARIATIONS of each word!
 If anyone can find or knows of an alternative algorithm for finding every variation of a 
 given word, I'm very interested to see how it is implemented...especially if it is faster!!
 
--Big O-  
-c = number of letters with constant case
-n = word length
-0 <= c <= n <= word_length
-
-O(n) --> if c <= 1
-O(2^(n-c) + n) = O(2^n) --> if 1 < c < n 
-O(2^n + n) = O(2^n) --> if c = n
-
 On my Dell laptop (4th gen i3 dual core) this algorithm processed
 over 100,000 words in under 3 seconds.  Test it for yourself!
 
