@@ -56,7 +56,7 @@ Al?????
 Map char variations to letter position:
 - index (letter positions) =    0 1 2 3 4 5 6 
 - map char variation to index = 1 1 1 2 2 2 2
-- Possible variations = 1x1x1x2x2x2x2 = 2^4 = 16 possible variations
+- Possible variations = 1x1x1x2x2x2x2 = 2^4 = 16
 - (a, l, b) are constants -> (A, l, B)
 - (i, n, o, s) are variants -> [(I,i) (N,n) (O,o) (S,s)]
 
