@@ -6,8 +6,8 @@ word variations.  If anyone can find or knows of an alternative algorithm
 for finding every variation of a given word, I'm very interested to see how
 it is implemented...especially if it is faster!!
 
-On my Dell laptop (4th gen i3 dual core) this algorithm processed
-over 100,000 words in under 3 seconds.  Test it for yourself!
+Inspiration derived from Jeff Thompson
+[http://www.jeffreythompson.org/blog/2013/12/04/every-word-in-the-periodic-table/]
 
 ===============================================================================================
 
