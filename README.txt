@@ -4,7 +4,12 @@ Find ALL POSSIBLE VARIATIONS of each word!
 This algorithm will create the absolute most exhaustive list of formed 
 word variations.  If anyone can find or knows of an alternative algorithm
 for finding every variation of a given word, I'm very interested to see how
-it is implemented...especially if it is faster!!
+it is implemented...especially if it is faster!! Currently runs in nlogn if 
+the pass/fail check is implemented in the same loop as the variations are
+formed.  Since words are are a finite length, n <= longest word in dictionary,
+so even a million word dictionary will complete in under 10 seconds on an
+everyday dual core machine (in C++ and Java anyway).  The English dictionary
+is around 100,000.
 
 Inspiration derived from Jeff Thompson
 [http://www.jeffreythompson.org/blog/2013/12/04/every-word-in-the-periodic-table/]
@@ -62,12 +67,12 @@ Map char variations to letter position:
 
 Build word variation "truth table": |   (analagous to building a truth table for n-bit input)
 A l B                               |    (x = constant, 0 = lower, 1 = upper):  
-      i n o s -->fail: 2 lower      |     x x x 0 0 0 0(s)
-      i n o S -->fail: 2 lower      |     x x x 0 0 0 1(S)
-      i n O s -->fail: 2 lower      |     x x x 0 0 1 0(s)
-      i n O S -->fail: 2 lower      |     x x x 0 0 1 1(S)
-      i N o s -->fail: 2 lower      |     x x x 0 1 0 0(s)
-      i N o S -->SUCCESS            |     x x x 0 1 0 1(S)
+      i n o s -->fail: 2 lower      |     x x x 0(i) 0(n) 0(o) 0(s)
+      i n o S -->fail: 2 lower      |     x x x 0(i) 0(n) 0(o) 1(S)
+      i n O s -->fail: 2 lower      |     x x x 0(i) 0(n) 1(O) 0(s)
+      i n O S -->fail: 2 lower      |     x x x 0(i) 0(n) 1(O) 1(S)
+      i N o s -->fail: 2 lower      |     x x x 0(i) 1(N) 0(o) 0(s)
+      i N o S -->SUCCESS            |     x x x 0(i) 1(N) 0(o) 1(S)
       i N O s -->SUCCESS            |     etc...
       i N O S -->SUCSESS            |     etc...
       I n o s -->fail: 2 lower        
