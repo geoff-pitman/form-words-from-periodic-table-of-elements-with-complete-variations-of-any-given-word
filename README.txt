@@ -5,9 +5,9 @@ This algorithm will create the absolute most exhaustive list of formed
 word variations.  If anyone can find or knows of an alternative algorithm
 for finding every variation of a given word, I'm very interested to see how
 it is implemented...especially if it is faster!! Currently runs in nlogn if 
-the pass/fail check is implemented in the same loop as the variations are
-formed.  Since words are are a finite length, n <= longest word in dictionary,
-so even a million word dictionary will complete in under 10 seconds on an
+the pass/fail check is implemented in the same loop that the variations are
+formed.  Since words are of a finite length, n <= longest word in dictionary.
+Even a million word dictionary will complete in under 10 seconds on an
 everyday dual core machine (in C++ and Java anyway).  The English dictionary
 is around 100,000.
 
