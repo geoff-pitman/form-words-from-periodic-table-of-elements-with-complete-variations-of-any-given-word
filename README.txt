@@ -37,7 +37,7 @@ Inspiration derived from Jeff Thompson
 6. Ensure that all variations were not eliminated
     a. If all variations fail then the word can not be formed
     b. Otherwise...store results!!
-(**Note**) A much more complicated algorithm is employed when a word
+(**Note**) A much more complicated algorithm is executed when a word
           contains a matching 3-char-symbol.  This happens extremely
           rarely, as there are no English words that contain one AND
           can also be formed.  However, for completeness' sake, I
